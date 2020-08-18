@@ -7,11 +7,17 @@ volatile int paddleState = 0;
 
 int main() {
 
-	consoleDemoInit();
-	consoleClear();	
-	setBrightness(3, 0);
+	NF_Set2D(0, 0);
 
-	iprintf("\n Hello World!");
+	NF_SetRootFolder("NITROFS");
+
+	NF_InitTiledBgBuffers();
+	NF_InitTiledBgSys(0);
+
+	NF_LoadTiledBg("bg/bg", "bg", 256, 256);
+	NF_CreateTiledBg(0, 3, "bg");
+
+
 
 	while(1) {
 

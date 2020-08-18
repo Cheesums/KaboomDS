@@ -1,9 +1,9 @@
 Archive member included to satisfy reference by file (symbol)
 
 C:/devkitPro/libnds/lib\libnds9.a(video.o)
-                              Kaboom!DS.o (setBrightness)
+                              main.o (setBrightness)
 C:/devkitPro/libnds/lib\libnds9.a(console.o)
-                              Kaboom!DS.o (consoleDemoInit)
+                              main.o (consoleDemoInit)
 C:/devkitPro/libnds/lib\libnds9.a(initSystem.o)
                               c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/9.1.0/../../../../arm-none-eabi/lib/thumb/ds_arm9_crt0.o (initSystem)
 C:/devkitPro/libnds/lib\libnds9.a(timeSupport.o)
@@ -19,7 +19,7 @@ C:/devkitPro/libnds/lib\libnds9.a(fifosystem.o)
 C:/devkitPro/libnds/lib\libnds9.a(mpu_setup.o)
                               c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/9.1.0/../../../../arm-none-eabi/lib/thumb/ds_arm9_crt0.o (__libnds_mpu_setup)
 C:/devkitPro/libnds/lib\libnds9.a(IntrWait.o)
-                              Kaboom!DS.o (swiWaitForVBlank)
+                              main.o (swiWaitForVBlank)
 C:/devkitPro/libnds/lib\libnds9.a(cpu_clock.o)
                               C:/devkitPro/libnds/lib\libnds9.a(initSystem.o) (setCpuClock)
 C:/devkitPro/libnds/lib\libnds9.a(interruptDispatcher.o)
@@ -47,7 +47,7 @@ c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/9.1.0/../../../../arm-none-e
 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/9.1.0/../../../../arm-none-eabi/lib/thumb\libg.a(lib_a-init.o)
                               c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/9.1.0/../../../../arm-none-eabi/lib/thumb/ds_arm9_crt0.o (__libc_init_array)
 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/9.1.0/../../../../arm-none-eabi/lib/thumb\libg.a(lib_a-iprintf.o)
-                              Kaboom!DS.o (iprintf)
+                              main.o (iprintf)
 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/9.1.0/../../../../arm-none-eabi/lib/thumb\libg.a(lib_a-memcpy-stub.o)
                               C:/devkitPro/libnds/lib\libnds9.a(console.o) (memcpy)
 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/9.1.0/../../../../arm-none-eabi/lib/thumb\libg.a(lib_a-memset.o)
@@ -237,9 +237,9 @@ Discarded input sections
  .bss           0x0000000000000000        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/9.1.0/thumb/crtbegin.o
  .data.__dso_handle
                 0x0000000000000000        0x4 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/9.1.0/thumb/crtbegin.o
- .text          0x0000000000000000        0x0 Kaboom!DS.o
- .data          0x0000000000000000        0x0 Kaboom!DS.o
- .bss           0x0000000000000000        0x4 Kaboom!DS.o
+ .text          0x0000000000000000        0x0 main.o
+ .data          0x0000000000000000        0x0 main.o
+ .bss           0x0000000000000000        0x0 main.o
  .text          0x0000000000000000        0x0 C:/devkitPro/libnds/lib\libnds9.a(video.o)
  .data          0x0000000000000000        0x0 C:/devkitPro/libnds/lib\libnds9.a(video.o)
  .bss           0x0000000000000000        0x0 C:/devkitPro/libnds/lib\libnds9.a(video.o)
@@ -967,7 +967,7 @@ Linker script and memory map
                 0x00000000020010d8       0x30 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/9.1.0/thumb/crtbegin.o
  .text.frame_dummy
                 0x0000000002001108       0x28 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/9.1.0/thumb/crtbegin.o
- .text.startup  0x0000000002001130       0x24 Kaboom!DS.o
+ .text.startup  0x0000000002001130       0x24 main.o
                 0x0000000002001130                main
  .text.setBrightness
                 0x0000000002001154       0x40 C:/devkitPro/libnds/lib\libnds9.a(video.o)
@@ -1371,7 +1371,7 @@ Linker script and memory map
  *(EXCLUDE_FILE(*.twl*) .roda)
  *(EXCLUDE_FILE(*.twl*) .rodata.*)
  .rodata.str1.4
-                0x000000000200bb58        0xf Kaboom!DS.o
+                0x000000000200bb58        0xf main.o
  *fill*         0x000000000200bb67        0x1 ff
  .rodata.con_write
                 0x000000000200bb68       0xd4 C:/devkitPro/libnds/lib\libnds9.a(console.o)
@@ -1742,7 +1742,7 @@ ARM.exidx
  *(.comment)
  .comment       0x0000000000000000       0x22 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/9.1.0/thumb/crtbegin.o
                                          0x23 (size before relaxing)
- .comment       0x0000000000000022       0x23 Kaboom!DS.o
+ .comment       0x0000000000000022       0x23 main.o
  .comment       0x0000000000000022       0x22 C:/devkitPro/libnds/lib\libnds9.a(video.o)
                                          0x23 (size before relaxing)
  .comment       0x0000000000000044       0x23 C:/devkitPro/libnds/lib\libnds9.a(console.o)
@@ -1828,7 +1828,7 @@ ARM.exidx
  .ARM.attributes
                 0x000000000000003d       0x2a c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/9.1.0/thumb/crtbegin.o
  .ARM.attributes
-                0x0000000000000067       0x27 Kaboom!DS.o
+                0x0000000000000067       0x27 main.o
  .ARM.attributes
                 0x000000000000008e       0x2b C:/devkitPro/libnds/lib\libnds9.a(video.o)
  .ARM.attributes
@@ -2027,7 +2027,7 @@ ARM.exidx
 .debug_aranges  0x0000000000000000      0x508
  *(.debug_aranges)
  .debug_aranges
-                0x0000000000000000       0x20 Kaboom!DS.o
+                0x0000000000000000       0x20 main.o
  .debug_aranges
                 0x0000000000000020       0x48 C:/devkitPro/libnds/lib\libnds9.a(video.o)
  .debug_aranges
@@ -2066,72 +2066,72 @@ ARM.exidx
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x0000000000000000     0xf5a0
+.debug_info     0x0000000000000000     0xee67
  *(.debug_info)
- .debug_info    0x0000000000000000     0x2af4 Kaboom!DS.o
- .debug_info    0x0000000000002af4      0x7dd C:/devkitPro/libnds/lib\libnds9.a(video.o)
- .debug_info    0x00000000000032d1     0x2a1a C:/devkitPro/libnds/lib\libnds9.a(console.o)
- .debug_info    0x0000000000005ceb     0x1f13 C:/devkitPro/libnds/lib\libnds9.a(initSystem.o)
- .debug_info    0x0000000000007bfe      0xab7 C:/devkitPro/libnds/lib\libnds9.a(timeSupport.o)
- .debug_info    0x00000000000086b5       0x59 C:/devkitPro/libnds/lib\libnds9.a(securearea.o)
- .debug_info    0x000000000000870e      0x735 C:/devkitPro/libnds/lib\libnds9.a(interrupts.o)
- .debug_info    0x0000000000008e43      0xd29 C:/devkitPro/libnds/lib\libnds9.a(libnds_exit.arm.o)
- .debug_info    0x0000000000009b6c     0x2197 C:/devkitPro/libnds/lib\libnds9.a(fifosystem.o)
- .debug_info    0x000000000000bd03       0x22 C:/devkitPro/libnds/lib\libnds9.a(mpu_setup.o)
- .debug_info    0x000000000000bd25       0x22 C:/devkitPro/libnds/lib\libnds9.a(IntrWait.o)
- .debug_info    0x000000000000bd47       0x26 C:/devkitPro/libnds/lib\libnds9.a(cpu_clock.o)
- .debug_info    0x000000000000bd6d       0x26 C:/devkitPro/libnds/lib\libnds9.a(interruptDispatcher.o)
- .debug_info    0x000000000000bd93       0x26 C:/devkitPro/libnds/lib\libnds9.a(swiSoftReset.o)
- .debug_info    0x000000000000bdb9     0x1424 C:/devkitPro/libnds/lib\libnds9.a(background.o)
- .debug_info    0x000000000000d1dd     0x1482 C:/devkitPro/libnds/lib\libnds9.a(system.o)
- .debug_info    0x000000000000e65f      0xf1f C:/devkitPro/libnds/lib\libnds9.a(trig.o)
- .debug_info    0x000000000000f57e       0x22 C:/devkitPro/libnds/lib\libnds9.a(biosCalls.o)
+ .debug_info    0x0000000000000000     0x23bb main.o
+ .debug_info    0x00000000000023bb      0x7dd C:/devkitPro/libnds/lib\libnds9.a(video.o)
+ .debug_info    0x0000000000002b98     0x2a1a C:/devkitPro/libnds/lib\libnds9.a(console.o)
+ .debug_info    0x00000000000055b2     0x1f13 C:/devkitPro/libnds/lib\libnds9.a(initSystem.o)
+ .debug_info    0x00000000000074c5      0xab7 C:/devkitPro/libnds/lib\libnds9.a(timeSupport.o)
+ .debug_info    0x0000000000007f7c       0x59 C:/devkitPro/libnds/lib\libnds9.a(securearea.o)
+ .debug_info    0x0000000000007fd5      0x735 C:/devkitPro/libnds/lib\libnds9.a(interrupts.o)
+ .debug_info    0x000000000000870a      0xd29 C:/devkitPro/libnds/lib\libnds9.a(libnds_exit.arm.o)
+ .debug_info    0x0000000000009433     0x2197 C:/devkitPro/libnds/lib\libnds9.a(fifosystem.o)
+ .debug_info    0x000000000000b5ca       0x22 C:/devkitPro/libnds/lib\libnds9.a(mpu_setup.o)
+ .debug_info    0x000000000000b5ec       0x22 C:/devkitPro/libnds/lib\libnds9.a(IntrWait.o)
+ .debug_info    0x000000000000b60e       0x26 C:/devkitPro/libnds/lib\libnds9.a(cpu_clock.o)
+ .debug_info    0x000000000000b634       0x26 C:/devkitPro/libnds/lib\libnds9.a(interruptDispatcher.o)
+ .debug_info    0x000000000000b65a       0x26 C:/devkitPro/libnds/lib\libnds9.a(swiSoftReset.o)
+ .debug_info    0x000000000000b680     0x1424 C:/devkitPro/libnds/lib\libnds9.a(background.o)
+ .debug_info    0x000000000000caa4     0x1482 C:/devkitPro/libnds/lib\libnds9.a(system.o)
+ .debug_info    0x000000000000df26      0xf1f C:/devkitPro/libnds/lib\libnds9.a(trig.o)
+ .debug_info    0x000000000000ee45       0x22 C:/devkitPro/libnds/lib\libnds9.a(biosCalls.o)
 
-.debug_abbrev   0x0000000000000000     0x2906
+.debug_abbrev   0x0000000000000000     0x2817
  *(.debug_abbrev)
- .debug_abbrev  0x0000000000000000      0x3e7 Kaboom!DS.o
- .debug_abbrev  0x00000000000003e7      0x254 C:/devkitPro/libnds/lib\libnds9.a(video.o)
- .debug_abbrev  0x000000000000063b      0x5a0 C:/devkitPro/libnds/lib\libnds9.a(console.o)
- .debug_abbrev  0x0000000000000bdb      0x3af C:/devkitPro/libnds/lib\libnds9.a(initSystem.o)
- .debug_abbrev  0x0000000000000f8a      0x20b C:/devkitPro/libnds/lib\libnds9.a(timeSupport.o)
- .debug_abbrev  0x0000000000001195       0x47 C:/devkitPro/libnds/lib\libnds9.a(securearea.o)
- .debug_abbrev  0x00000000000011dc      0x2f7 C:/devkitPro/libnds/lib\libnds9.a(interrupts.o)
- .debug_abbrev  0x00000000000014d3      0x2d0 C:/devkitPro/libnds/lib\libnds9.a(libnds_exit.arm.o)
- .debug_abbrev  0x00000000000017a3      0x59b C:/devkitPro/libnds/lib\libnds9.a(fifosystem.o)
- .debug_abbrev  0x0000000000001d3e       0x12 C:/devkitPro/libnds/lib\libnds9.a(mpu_setup.o)
- .debug_abbrev  0x0000000000001d50       0x12 C:/devkitPro/libnds/lib\libnds9.a(IntrWait.o)
- .debug_abbrev  0x0000000000001d62       0x14 C:/devkitPro/libnds/lib\libnds9.a(cpu_clock.o)
- .debug_abbrev  0x0000000000001d76       0x14 C:/devkitPro/libnds/lib\libnds9.a(interruptDispatcher.o)
- .debug_abbrev  0x0000000000001d8a       0x14 C:/devkitPro/libnds/lib\libnds9.a(swiSoftReset.o)
- .debug_abbrev  0x0000000000001d9e      0x416 C:/devkitPro/libnds/lib\libnds9.a(background.o)
- .debug_abbrev  0x00000000000021b4      0x3cd C:/devkitPro/libnds/lib\libnds9.a(system.o)
- .debug_abbrev  0x0000000000002581      0x373 C:/devkitPro/libnds/lib\libnds9.a(trig.o)
- .debug_abbrev  0x00000000000028f4       0x12 C:/devkitPro/libnds/lib\libnds9.a(biosCalls.o)
+ .debug_abbrev  0x0000000000000000      0x2f8 main.o
+ .debug_abbrev  0x00000000000002f8      0x254 C:/devkitPro/libnds/lib\libnds9.a(video.o)
+ .debug_abbrev  0x000000000000054c      0x5a0 C:/devkitPro/libnds/lib\libnds9.a(console.o)
+ .debug_abbrev  0x0000000000000aec      0x3af C:/devkitPro/libnds/lib\libnds9.a(initSystem.o)
+ .debug_abbrev  0x0000000000000e9b      0x20b C:/devkitPro/libnds/lib\libnds9.a(timeSupport.o)
+ .debug_abbrev  0x00000000000010a6       0x47 C:/devkitPro/libnds/lib\libnds9.a(securearea.o)
+ .debug_abbrev  0x00000000000010ed      0x2f7 C:/devkitPro/libnds/lib\libnds9.a(interrupts.o)
+ .debug_abbrev  0x00000000000013e4      0x2d0 C:/devkitPro/libnds/lib\libnds9.a(libnds_exit.arm.o)
+ .debug_abbrev  0x00000000000016b4      0x59b C:/devkitPro/libnds/lib\libnds9.a(fifosystem.o)
+ .debug_abbrev  0x0000000000001c4f       0x12 C:/devkitPro/libnds/lib\libnds9.a(mpu_setup.o)
+ .debug_abbrev  0x0000000000001c61       0x12 C:/devkitPro/libnds/lib\libnds9.a(IntrWait.o)
+ .debug_abbrev  0x0000000000001c73       0x14 C:/devkitPro/libnds/lib\libnds9.a(cpu_clock.o)
+ .debug_abbrev  0x0000000000001c87       0x14 C:/devkitPro/libnds/lib\libnds9.a(interruptDispatcher.o)
+ .debug_abbrev  0x0000000000001c9b       0x14 C:/devkitPro/libnds/lib\libnds9.a(swiSoftReset.o)
+ .debug_abbrev  0x0000000000001caf      0x416 C:/devkitPro/libnds/lib\libnds9.a(background.o)
+ .debug_abbrev  0x00000000000020c5      0x3cd C:/devkitPro/libnds/lib\libnds9.a(system.o)
+ .debug_abbrev  0x0000000000002492      0x373 C:/devkitPro/libnds/lib\libnds9.a(trig.o)
+ .debug_abbrev  0x0000000000002805       0x12 C:/devkitPro/libnds/lib\libnds9.a(biosCalls.o)
 
-.debug_line     0x0000000000000000     0x5825
+.debug_line     0x0000000000000000     0x5703
  *(.debug_line)
- .debug_line    0x0000000000000000      0x47b Kaboom!DS.o
- .debug_line    0x000000000000047b      0x4aa C:/devkitPro/libnds/lib\libnds9.a(video.o)
- .debug_line    0x0000000000000925     0x11fc C:/devkitPro/libnds/lib\libnds9.a(console.o)
- .debug_line    0x0000000000001b21      0x57f C:/devkitPro/libnds/lib\libnds9.a(initSystem.o)
- .debug_line    0x00000000000020a0      0x21b C:/devkitPro/libnds/lib\libnds9.a(timeSupport.o)
- .debug_line    0x00000000000022bb       0x82 C:/devkitPro/libnds/lib\libnds9.a(securearea.o)
- .debug_line    0x000000000000233d      0x53b C:/devkitPro/libnds/lib\libnds9.a(interrupts.o)
- .debug_line    0x0000000000002878      0x2d0 C:/devkitPro/libnds/lib\libnds9.a(libnds_exit.arm.o)
- .debug_line    0x0000000000002b48     0x140d C:/devkitPro/libnds/lib\libnds9.a(fifosystem.o)
- .debug_line    0x0000000000003f55      0x12f C:/devkitPro/libnds/lib\libnds9.a(mpu_setup.o)
- .debug_line    0x0000000000004084       0xba C:/devkitPro/libnds/lib\libnds9.a(IntrWait.o)
- .debug_line    0x000000000000413e       0xa3 C:/devkitPro/libnds/lib\libnds9.a(cpu_clock.o)
- .debug_line    0x00000000000041e1       0xcc C:/devkitPro/libnds/lib\libnds9.a(interruptDispatcher.o)
- .debug_line    0x00000000000042ad       0x9c C:/devkitPro/libnds/lib\libnds9.a(swiSoftReset.o)
- .debug_line    0x0000000000004349      0x6e4 C:/devkitPro/libnds/lib\libnds9.a(background.o)
- .debug_line    0x0000000000004a2d      0x55a C:/devkitPro/libnds/lib\libnds9.a(system.o)
- .debug_line    0x0000000000004f87      0x6ac C:/devkitPro/libnds/lib\libnds9.a(trig.o)
- .debug_line    0x0000000000005633      0x1f2 C:/devkitPro/libnds/lib\libnds9.a(biosCalls.o)
+ .debug_line    0x0000000000000000      0x359 main.o
+ .debug_line    0x0000000000000359      0x4aa C:/devkitPro/libnds/lib\libnds9.a(video.o)
+ .debug_line    0x0000000000000803     0x11fc C:/devkitPro/libnds/lib\libnds9.a(console.o)
+ .debug_line    0x00000000000019ff      0x57f C:/devkitPro/libnds/lib\libnds9.a(initSystem.o)
+ .debug_line    0x0000000000001f7e      0x21b C:/devkitPro/libnds/lib\libnds9.a(timeSupport.o)
+ .debug_line    0x0000000000002199       0x82 C:/devkitPro/libnds/lib\libnds9.a(securearea.o)
+ .debug_line    0x000000000000221b      0x53b C:/devkitPro/libnds/lib\libnds9.a(interrupts.o)
+ .debug_line    0x0000000000002756      0x2d0 C:/devkitPro/libnds/lib\libnds9.a(libnds_exit.arm.o)
+ .debug_line    0x0000000000002a26     0x140d C:/devkitPro/libnds/lib\libnds9.a(fifosystem.o)
+ .debug_line    0x0000000000003e33      0x12f C:/devkitPro/libnds/lib\libnds9.a(mpu_setup.o)
+ .debug_line    0x0000000000003f62       0xba C:/devkitPro/libnds/lib\libnds9.a(IntrWait.o)
+ .debug_line    0x000000000000401c       0xa3 C:/devkitPro/libnds/lib\libnds9.a(cpu_clock.o)
+ .debug_line    0x00000000000040bf       0xcc C:/devkitPro/libnds/lib\libnds9.a(interruptDispatcher.o)
+ .debug_line    0x000000000000418b       0x9c C:/devkitPro/libnds/lib\libnds9.a(swiSoftReset.o)
+ .debug_line    0x0000000000004227      0x6e4 C:/devkitPro/libnds/lib\libnds9.a(background.o)
+ .debug_line    0x000000000000490b      0x55a C:/devkitPro/libnds/lib\libnds9.a(system.o)
+ .debug_line    0x0000000000004e65      0x6ac C:/devkitPro/libnds/lib\libnds9.a(trig.o)
+ .debug_line    0x0000000000005511      0x1f2 C:/devkitPro/libnds/lib\libnds9.a(biosCalls.o)
 
 .debug_frame    0x0000000000000000      0x8ec
  *(.debug_frame)
- .debug_frame   0x0000000000000000       0x28 Kaboom!DS.o
+ .debug_frame   0x0000000000000000       0x28 main.o
  .debug_frame   0x0000000000000028       0xb8 C:/devkitPro/libnds/lib\libnds9.a(video.o)
  .debug_frame   0x00000000000000e0      0x1a0 C:/devkitPro/libnds/lib\libnds9.a(console.o)
  .debug_frame   0x0000000000000280       0x28 C:/devkitPro/libnds/lib\libnds9.a(initSystem.o)
@@ -2143,57 +2143,58 @@ ARM.exidx
  .debug_frame   0x0000000000000724       0xf8 C:/devkitPro/libnds/lib\libnds9.a(system.o)
  .debug_frame   0x000000000000081c       0xd0 C:/devkitPro/libnds/lib\libnds9.a(trig.o)
 
-.debug_str      0x0000000000000000     0x3fb8
+.debug_str      0x0000000000000000     0x3e22
  *(.debug_str)
- .debug_str     0x0000000000000000     0x1386 Kaboom!DS.o
-                                       0x1712 (size before relaxing)
- .debug_str     0x0000000000001386      0xb40 C:/devkitPro/libnds/lib\libnds9.a(video.o)
+ .debug_str     0x0000000000000000     0x11ee main.o
+                                       0x1326 (size before relaxing)
+ .debug_str     0x00000000000011ee      0xb40 C:/devkitPro/libnds/lib\libnds9.a(video.o)
                                         0xc55 (size before relaxing)
- .debug_str     0x0000000000001ec6      0xb59 C:/devkitPro/libnds/lib\libnds9.a(console.o)
+ .debug_str     0x0000000000001d2e      0xb53 C:/devkitPro/libnds/lib\libnds9.a(console.o)
                                        0x1481 (size before relaxing)
- .debug_str     0x0000000000002a1f      0x369 C:/devkitPro/libnds/lib\libnds9.a(initSystem.o)
+ .debug_str     0x0000000000002881      0x369 C:/devkitPro/libnds/lib\libnds9.a(initSystem.o)
                                        0x12a3 (size before relaxing)
- .debug_str     0x0000000000002d88       0x71 C:/devkitPro/libnds/lib\libnds9.a(timeSupport.o)
+ .debug_str     0x0000000000002bea       0x71 C:/devkitPro/libnds/lib\libnds9.a(timeSupport.o)
                                         0x6a9 (size before relaxing)
- .debug_str     0x0000000000002df9       0x72 C:/devkitPro/libnds/lib\libnds9.a(securearea.o)
+ .debug_str     0x0000000000002c5b       0x72 C:/devkitPro/libnds/lib\libnds9.a(securearea.o)
                                         0x153 (size before relaxing)
- .debug_str     0x0000000000002e6b      0x179 C:/devkitPro/libnds/lib\libnds9.a(interrupts.o)
+ .debug_str     0x0000000000002ccd      0x179 C:/devkitPro/libnds/lib\libnds9.a(interrupts.o)
                                         0x4dd (size before relaxing)
- .debug_str     0x0000000000002fe4      0x1cd C:/devkitPro/libnds/lib\libnds9.a(libnds_exit.arm.o)
+ .debug_str     0x0000000000002e46      0x1cd C:/devkitPro/libnds/lib\libnds9.a(libnds_exit.arm.o)
                                         0x873 (size before relaxing)
- .debug_str     0x00000000000031b1      0x489 C:/devkitPro/libnds/lib\libnds9.a(fifosystem.o)
+ .debug_str     0x0000000000003013      0x489 C:/devkitPro/libnds/lib\libnds9.a(fifosystem.o)
                                         0xd27 (size before relaxing)
- .debug_str     0x000000000000363a       0x6d C:/devkitPro/libnds/lib\libnds9.a(mpu_setup.o)
+ .debug_str     0x000000000000349c       0x6d C:/devkitPro/libnds/lib\libnds9.a(mpu_setup.o)
                                          0xb4 (size before relaxing)
- .debug_str     0x00000000000036a7       0x60 C:/devkitPro/libnds/lib\libnds9.a(IntrWait.o)
+ .debug_str     0x0000000000003509       0x60 C:/devkitPro/libnds/lib\libnds9.a(IntrWait.o)
                                          0xb3 (size before relaxing)
- .debug_str     0x0000000000003707       0x61 C:/devkitPro/libnds/lib\libnds9.a(cpu_clock.o)
+ .debug_str     0x0000000000003569       0x61 C:/devkitPro/libnds/lib\libnds9.a(cpu_clock.o)
                                          0xb4 (size before relaxing)
- .debug_str     0x0000000000003768       0x66 C:/devkitPro/libnds/lib\libnds9.a(interruptDispatcher.o)
+ .debug_str     0x00000000000035ca       0x66 C:/devkitPro/libnds/lib\libnds9.a(interruptDispatcher.o)
                                          0xb9 (size before relaxing)
- .debug_str     0x00000000000037ce       0x5f C:/devkitPro/libnds/lib\libnds9.a(swiSoftReset.o)
+ .debug_str     0x0000000000003630       0x5f C:/devkitPro/libnds/lib\libnds9.a(swiSoftReset.o)
                                          0xb2 (size before relaxing)
- .debug_str     0x000000000000382d      0x2c5 C:/devkitPro/libnds/lib\libnds9.a(background.o)
+ .debug_str     0x000000000000368f      0x2c5 C:/devkitPro/libnds/lib\libnds9.a(background.o)
                                         0xbba (size before relaxing)
- .debug_str     0x0000000000003af2      0x37d C:/devkitPro/libnds/lib\libnds9.a(system.o)
+ .debug_str     0x0000000000003954      0x37d C:/devkitPro/libnds/lib\libnds9.a(system.o)
                                         0xc41 (size before relaxing)
- .debug_str     0x0000000000003e6f       0xed C:/devkitPro/libnds/lib\libnds9.a(trig.o)
+ .debug_str     0x0000000000003cd1       0xf5 C:/devkitPro/libnds/lib\libnds9.a(trig.o)
                                         0x707 (size before relaxing)
- .debug_str     0x0000000000003f5c       0x5c C:/devkitPro/libnds/lib\libnds9.a(biosCalls.o)
+ .debug_str     0x0000000000003dc6       0x5c C:/devkitPro/libnds/lib\libnds9.a(biosCalls.o)
                                          0xaf (size before relaxing)
 
-.debug_loc      0x0000000000000000     0x41d6
+.debug_loc      0x0000000000000000     0x4220
  *(.debug_loc)
- .debug_loc     0x0000000000000000      0x2e5 C:/devkitPro/libnds/lib\libnds9.a(video.o)
- .debug_loc     0x00000000000002e5     0x1426 C:/devkitPro/libnds/lib\libnds9.a(console.o)
- .debug_loc     0x000000000000170b       0xf0 C:/devkitPro/libnds/lib\libnds9.a(initSystem.o)
- .debug_loc     0x00000000000017fb       0x25 C:/devkitPro/libnds/lib\libnds9.a(timeSupport.o)
- .debug_loc     0x0000000000001820      0x26c C:/devkitPro/libnds/lib\libnds9.a(interrupts.o)
- .debug_loc     0x0000000000001a8c       0x64 C:/devkitPro/libnds/lib\libnds9.a(libnds_exit.arm.o)
- .debug_loc     0x0000000000001af0     0x1710 C:/devkitPro/libnds/lib\libnds9.a(fifosystem.o)
- .debug_loc     0x0000000000003200      0x475 C:/devkitPro/libnds/lib\libnds9.a(background.o)
- .debug_loc     0x0000000000003675      0x23f C:/devkitPro/libnds/lib\libnds9.a(system.o)
- .debug_loc     0x00000000000038b4      0x922 C:/devkitPro/libnds/lib\libnds9.a(trig.o)
+ .debug_loc     0x0000000000000000       0x4a main.o
+ .debug_loc     0x000000000000004a      0x2e5 C:/devkitPro/libnds/lib\libnds9.a(video.o)
+ .debug_loc     0x000000000000032f     0x1426 C:/devkitPro/libnds/lib\libnds9.a(console.o)
+ .debug_loc     0x0000000000001755       0xf0 C:/devkitPro/libnds/lib\libnds9.a(initSystem.o)
+ .debug_loc     0x0000000000001845       0x25 C:/devkitPro/libnds/lib\libnds9.a(timeSupport.o)
+ .debug_loc     0x000000000000186a      0x26c C:/devkitPro/libnds/lib\libnds9.a(interrupts.o)
+ .debug_loc     0x0000000000001ad6       0x64 C:/devkitPro/libnds/lib\libnds9.a(libnds_exit.arm.o)
+ .debug_loc     0x0000000000001b3a     0x1710 C:/devkitPro/libnds/lib\libnds9.a(fifosystem.o)
+ .debug_loc     0x000000000000324a      0x475 C:/devkitPro/libnds/lib\libnds9.a(background.o)
+ .debug_loc     0x00000000000036bf      0x23f C:/devkitPro/libnds/lib\libnds9.a(system.o)
+ .debug_loc     0x00000000000038fe      0x922 C:/devkitPro/libnds/lib\libnds9.a(trig.o)
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -2216,13 +2217,11 @@ ARM.exidx
 LOAD c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/9.1.0/../../../../arm-none-eabi/lib/thumb/ds_arm9_crt0.o
 LOAD c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/9.1.0/thumb/crti.o
 LOAD c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/9.1.0/thumb/crtbegin.o
-LOAD Kaboom!DS.o
-LOAD C:/devkitPro/Projects/Kaboom!DS/nflib/lib\libnflib.a
+LOAD main.o
+LOAD C:/devkitPro/Projects/NightFoxTest/nflib/lib\libnflib.a
 LOAD C:/devkitPro/libnds/lib\libfilesystem.a
 LOAD C:/devkitPro/libnds/lib\libfat.a
 LOAD C:/devkitPro/libnds/lib\libnds9.a
-LOAD c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/9.1.0/../../../../arm-none-eabi/lib/thumb\libstdc++.a
-LOAD c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/9.1.0/../../../../arm-none-eabi/lib/thumb\libm.a
 START GROUP
 LOAD c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/9.1.0/thumb\libgcc.a
 LOAD c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/9.1.0/../../../../arm-none-eabi/lib/thumb\libg.a
@@ -2231,10 +2230,10 @@ LOAD c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/9.1.0/../../../../arm-n
 END GROUP
 LOAD c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/9.1.0/thumb/crtend.o
 LOAD c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/9.1.0/thumb/crtn.o
-OUTPUT(C:/devkitPro/Projects/Kaboom!DS/Kaboom!DS.elf elf32-littlearm)
+OUTPUT(C:/devkitPro/Projects/NightFoxTest/NightFoxTest.elf elf32-littlearm)
 
 .debug_ranges   0x0000000000000000      0xb58
- .debug_ranges  0x0000000000000000       0x10 Kaboom!DS.o
+ .debug_ranges  0x0000000000000000       0x10 main.o
  .debug_ranges  0x0000000000000010       0x50 C:/devkitPro/libnds/lib\libnds9.a(video.o)
  .debug_ranges  0x0000000000000060      0x2a0 C:/devkitPro/libnds/lib\libnds9.a(console.o)
  .debug_ranges  0x0000000000000300       0x10 C:/devkitPro/libnds/lib\libnds9.a(initSystem.o)

@@ -13,17 +13,21 @@ Sprite_Data Sprite;
 int main() {
 
 	NF_Set2D(0, 0);
+	NF_Set2D(1, 0);
 
 	NF_SetRootFolder("NITROFS");
 
 	NF_InitTiledBgBuffers();
 	NF_InitTiledBgSys(0);
+	NF_InitTiledBgSys(1);
 
 	NF_InitSpriteBuffers();
 	NF_InitSpriteSys(0);
 
-	NF_LoadTiledBg("bg/bg", "bg", 256, 256);
-	NF_CreateTiledBg(0, 3, "bg");
+	NF_LoadTiledBg("bg/backgroundTop", "backgroundTop", 256, 256);
+	NF_LoadTiledBg("bg/backgroundBot", "backgroundBot", 256, 256);
+	NF_CreateTiledBg(0, 3, "backgroundTop");
+	NF_CreateTiledBg(1, 3, "backgroundBot");
 
 	NF_LoadSpriteGfx("sprite/runnerSpriteSheet", 0, 8, 8);
 	NF_LoadSpritePal("sprite/runnerSpriteSheet", 0);

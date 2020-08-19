@@ -3,6 +3,8 @@
 #include <nds/arm9/paddle.h>
 #include <nf_lib.h>
 
+
+
 volatile int paddleState = 0;
 volatile int frameCount = 0;
 volatile int bomberMult = 1;
@@ -17,63 +19,33 @@ volatile int bombCount = 0;
 
 typedef struct{int Screen, ID, X, Y, Frame;} Sprite_Data;
 
+void loadGraphics();
+void displayBackgrounds();
+void spawnBuckets(Sprite_Data bucket[]);
+
 Sprite_Data bomber;
 Sprite_Data bucket[3];
 Sprite_Data bombs[50];
 
 int main() {
-//Prepare both screens for 2D graphics mode
-	NF_Set2D(0, 0);
-	NF_Set2D(1, 0);
-//Use NitroFS filesystem
-	NF_SetRootFolder("NITROFS");
-//Prepare both screens for backgroudns
-	NF_InitTiledBgBuffers();
-	NF_InitTiledBgSys(0);
-	NF_InitTiledBgSys(1);
-//Prepare both screens for sprites
-	NF_InitSpriteBuffers();
-	NF_InitSpriteSys(0);
-	NF_InitSpriteSys(1);
-//Display a background on each screen
-	NF_LoadTiledBg("bg/backgroundTop", "backgroundTop", 256, 256);
-	NF_LoadTiledBg("bg/backgroundBot", "backgroundBot", 256, 256);
-	NF_CreateTiledBg(0, 3, "backgroundTop");
-	NF_CreateTiledBg(1, 3, "backgroundBot");
+
+	loadGraphics();
+	displayBackgrounds();
+
 
 //load and display the bomber
 	bomber.ID = 0;
-	NF_LoadSpriteGfx("sprite/bomberSprite", bomber.ID, 64, 64);
-	NF_LoadSpritePal("sprite/bomberSprite", bomber.ID);
-	NF_VramSpriteGfx(0, 0, 0, false);
-	NF_VramSpritePal(0, 0, 0);
 	bomber.X = 100;
 	bomber.Y = 52;
 	NF_CreateSprite(0,bomber.ID, 0, 0, bomber.X ,bomber.Y);
 //change the bomber sprite to the frame holding the bomb
 	NF_SpriteFrame(0, bomber.ID, 1);
 
-//load the bucket sprite
-	NF_LoadSpriteGfx("sprite/bucket", 1, 64, 32);
-	NF_LoadSpritePal("sprite/bucket", 1);
-	NF_VramSpriteGfx(1, 1, 1, false);
-	NF_VramSpritePal(1, 1, 1);
-//load bucket structs and display 3 buckets
-	for (int i = 0; i < 3; i++)
-	{
-		bucket[i].X = 10;
-		bucket[i].Y = (highBucket + (32*i));
-		bucket[i].ID = i+1;
-		NF_CreateSprite(1, bucket[i].ID, 1, 1, bucket[i].X, bucket[i].Y);
-	}
 
-//load bomb sprite for both screens
-	NF_LoadSpriteGfx("sprite/bomb", 2, 16, 16);
-	NF_LoadSpritePal("Sprite/bomb", 2);
-	NF_VramSpriteGfx(0, 2, 2, false);
-	NF_VramSpritePal(0, 2, 2);
-	NF_VramSpriteGfx(1, 2, 2, false);
-	NF_VramSpritePal(1, 2, 2);
+//load bucket sprite structs and display 3 buckets
+spawnBuckets(bucket);
+
+
 
 
 //set paddle to have initial displacement of 0
@@ -183,4 +155,66 @@ for (int i = 0; i < 50; i++)
 	}
 
 	return 0;
+}
+
+
+void loadGraphics() {
+
+//Prepare both screens for 2D graphics mode
+	NF_Set2D(0, 0);
+	NF_Set2D(1, 0);
+//Use NitroFS filesystem
+	NF_SetRootFolder("NITROFS");
+
+//Prepare both screens for backgroudns
+	NF_InitTiledBgBuffers();
+	NF_InitTiledBgSys(0);
+	NF_InitTiledBgSys(1);
+//Prepare both screens for sprites
+	NF_InitSpriteBuffers();
+	NF_InitSpriteSys(0);
+	NF_InitSpriteSys(1);
+
+//Load a background for each screen
+	NF_LoadTiledBg("bg/backgroundTop", "backgroundTop", 256, 256);
+	NF_LoadTiledBg("bg/backgroundBot", "backgroundBot", 256, 256);
+
+//Load bomber sprite
+	NF_LoadSpriteGfx("sprite/bomberSprite", bomber.ID, 64, 64);
+	NF_LoadSpritePal("sprite/bomberSprite", bomber.ID);
+	NF_VramSpriteGfx(0, 0, 0, false);
+	NF_VramSpritePal(0, 0, 0);
+
+//Load bucket sprite
+	NF_LoadSpriteGfx("sprite/bucket", 1, 64, 32);
+	NF_LoadSpritePal("sprite/bucket", 1);
+	NF_VramSpriteGfx(1, 1, 1, false);
+	NF_VramSpritePal(1, 1, 1);
+
+//load bomb sprite for both screens
+	NF_LoadSpriteGfx("sprite/bomb", 2, 16, 16);
+	NF_LoadSpritePal("Sprite/bomb", 2);
+	NF_VramSpriteGfx(0, 2, 2, false);
+	NF_VramSpritePal(0, 2, 2);
+	NF_VramSpriteGfx(1, 2, 2, false);
+	NF_VramSpritePal(1, 2, 2);
+}
+
+void displayBackgrounds() {
+	//Create backgrounds
+	NF_CreateTiledBg(0, 3, "backgroundTop");
+	NF_CreateTiledBg(1, 3, "backgroundBot");
+
+}
+
+//Spawn buckets with top bucket at initial cooordinates (X, Y)
+void spawnBuckets(Sprite_Data bucket[]) {
+	for (int i = 0; i < 3; i++)
+	{
+		bucket[i].X = 10;
+		bucket[i].Y = (highBucket + (32*i));
+		bucket[i].ID = i+1;
+		NF_CreateSprite(1, bucket[i].ID, 1, 1, bucket[i].X, bucket[i].Y);
+	}
+
 }

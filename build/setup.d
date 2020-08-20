@@ -1,4 +1,9 @@
-main.o: C:/devkitPro/Projects/Kaboom!DS/source/main.cpp \
+setup.o: C:/devkitPro/Projects/Kaboom!DS/source/setup.cpp \
+ C:/devkitPro/Projects/Kaboom!DS/source/setup.h \
+ C:/devkitPro/Projects/Kaboom!DS/source/sprites.h \
+ C:/devkitPro/Projects/Kaboom!DS/nflib/include/nf_lib.h \
+ C:/devkitPro/Projects/Kaboom!DS/nflib/include/nf_defines.h \
+ C:/devkitPro/Projects/Kaboom!DS/nflib/include/nf_basic.h \
  C:/devkitPro/libnds/include/nds.h \
  C:/devkitPro/libnds/include/nds/libversion.h \
  C:/devkitPro/libnds/include/nds/ndstypes.h \
@@ -59,10 +64,6 @@ main.o: C:/devkitPro/Projects/Kaboom!DS/source/main.cpp \
  C:/devkitPro/libnds/include/nds/arm9/video.h \
  C:/devkitPro/libnds/include/nds/arm9/videoGL.h \
  C:/devkitPro/libnds/include/nds/arm9/nand.h \
- C:/devkitPro/libnds/include/nds/arm9/paddle.h \
- C:/devkitPro/Projects/Kaboom!DS/nflib/include/nf_lib.h \
- C:/devkitPro/Projects/Kaboom!DS/nflib/include/nf_defines.h \
- C:/devkitPro/Projects/Kaboom!DS/nflib/include/nf_basic.h \
  C:/devkitPro/Projects/Kaboom!DS/nflib/include/nf_2d.h \
  C:/devkitPro/Projects/Kaboom!DS/nflib/include/nf_tiledbg.h \
  C:/devkitPro/Projects/Kaboom!DS/nflib/include/nf_affinebg.h \
@@ -75,9 +76,17 @@ main.o: C:/devkitPro/Projects/Kaboom!DS/source/main.cpp \
  C:/devkitPro/Projects/Kaboom!DS/nflib/include/nf_sound.h \
  C:/devkitPro/Projects/Kaboom!DS/nflib/include/nf_media.h \
  C:/devkitPro/Projects/Kaboom!DS/nflib/include/nf_3d.h \
- C:/devkitPro/Projects/Kaboom!DS/nflib/include/nf_sprite3d.h \
- C:/devkitPro/Projects/Kaboom!DS/source/sprites.h \
- C:/devkitPro/Projects/Kaboom!DS/source/setup.h
+ C:/devkitPro/Projects/Kaboom!DS/nflib/include/nf_sprite3d.h
+
+C:/devkitPro/Projects/Kaboom!DS/source/setup.h:
+
+C:/devkitPro/Projects/Kaboom!DS/source/sprites.h:
+
+C:/devkitPro/Projects/Kaboom!DS/nflib/include/nf_lib.h:
+
+C:/devkitPro/Projects/Kaboom!DS/nflib/include/nf_defines.h:
+
+C:/devkitPro/Projects/Kaboom!DS/nflib/include/nf_basic.h:
 
 C:/devkitPro/libnds/include/nds.h:
 
@@ -199,14 +208,6 @@ C:/devkitPro/libnds/include/nds/arm9/videoGL.h:
 
 C:/devkitPro/libnds/include/nds/arm9/nand.h:
 
-C:/devkitPro/libnds/include/nds/arm9/paddle.h:
-
-C:/devkitPro/Projects/Kaboom!DS/nflib/include/nf_lib.h:
-
-C:/devkitPro/Projects/Kaboom!DS/nflib/include/nf_defines.h:
-
-C:/devkitPro/Projects/Kaboom!DS/nflib/include/nf_basic.h:
-
 C:/devkitPro/Projects/Kaboom!DS/nflib/include/nf_2d.h:
 
 C:/devkitPro/Projects/Kaboom!DS/nflib/include/nf_tiledbg.h:
@@ -232,7 +233,3 @@ C:/devkitPro/Projects/Kaboom!DS/nflib/include/nf_media.h:
 C:/devkitPro/Projects/Kaboom!DS/nflib/include/nf_3d.h:
 
 C:/devkitPro/Projects/Kaboom!DS/nflib/include/nf_sprite3d.h:
-
-C:/devkitPro/Projects/Kaboom!DS/source/sprites.h:
-
-C:/devkitPro/Projects/Kaboom!DS/source/setup.h:

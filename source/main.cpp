@@ -23,7 +23,7 @@ void loadGraphics();
 void displayBackgrounds();
 void spawnBuckets(Bucket bucket[]);
 
-Sprite_Data bombs[50];
+//Sprite_Data bombs[50];
 
 int main() {
 
@@ -32,6 +32,7 @@ int main() {
 
 	MadBomber bomber;
 	Bucket bucket[3];
+	Bomb bomb[50];
 
 
 //load and display the bomber
@@ -41,6 +42,7 @@ int main() {
 	bomber.setGfx(0);
 	bomber.setPal(0);
 	bomber.create();
+	bomber.setLayer(3);
 //change the bomber sprite to the frame holding the bomb
 	NF_SpriteFrame(0, bomber.getID(), 1);
 	bomber.setVel(2);
@@ -56,11 +58,12 @@ int main() {
 	lastPaddle = paddleRead();
 
 //pre-populate bomb ID's with unused sprite ID so loops don't interfere with non-intended sprites (i.e. moving sprite 0 when sprite 0 is the bomber)
+/*
 for (int i = 0; i < 50; i++)
 {
-	bombs[i].ID = 100;
+	//bombs[i].setID(100);
 }
-
+*/
 
 
 //perform everything in loop once each frame
@@ -108,11 +111,14 @@ for (int i = 0; i < 50; i++)
 		//drop a bomb every 20 frames
 		if (frameCount%20 == 0)
 		{
+			/*
 			bombs[bombCount].Screen = 0;
 			bombs[bombCount].ID = bombCount + 4;
 			bombs[bombCount].X = bomber.getX();
 			bombs[bombCount].Y = 50;
 			NF_CreateSprite(0, bombs[bombCount].ID, 2, 2, bombs[bombCount].X, bombs[bombCount].Y);
+			*/
+			bomb[bombCount].spawn(bombCount, bomber.getX());
 			bombCount++;
 			if (bombCount == 50)
 			{
@@ -125,25 +131,31 @@ for (int i = 0; i < 50; i++)
 		//Hide bombs and move them offscreen when they fall off of the bottom screen.
 		for (int i = 0; i < 50; i++)
 		{
-			if (bombs[i].ID < 55)
+			if (bomb[i].getID() < 55)
 			{
-				bombs[i].Y = bombs[i].Y + 2;
+				//bombs[i].Y = bombs[i].Y + 2;
+				bomb[i].bombScroll();
 			}
 			
-			if (bombs[i].Y > 198)
+			if (bomb[i].getY() > 198)
 			{
-				if (bombs[i].Screen < 1)
+				if (bomb[i].getScreen() < 1)
 				{
+					/*
 					bombs[i].Screen = 1;
 					bombs[i].Y = -16;
 					NF_CreateSprite(bombs[i].Screen, bombs[i].ID, 2, 2, bombs[i].X, bombs[i].Y);
+					*/
+					bomb[i].jumpScreen();
 				}else
 				{
-					NF_ShowSprite(1, bombs[i].ID, false);
-					bombs[i].X = 350;
+					//NF_ShowSprite(1, bombs[i].ID, false);
+					//bombs[i].X = 350;
+					bomb[i].hide();
 				}
 			}
-			NF_MoveSprite(bombs[i].Screen, bombs[i].ID, bombs[i].X, bombs[i].Y);
+			//bomb[i].updatePos();
+			//NF_MoveSprite(bombs[i].Screen, bombs[i].ID, bombs[i].X, bombs[i].Y);
 		}
 		
 		
@@ -224,5 +236,4 @@ void spawnBuckets(Bucket bucket[]) {
 		bucket[i].create();
 		//NF_CreateSprite(1, bucket[i].ID, 1, 1, bucket[i].X, bucket[i].Y);
 	}
-
 }

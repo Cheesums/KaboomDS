@@ -8,10 +8,11 @@ class Sprite {
 	int X_;
 	int Y_;
 	int frame_;
-	int ID_;
+	int ID_ = 300; //initialize sprite ID outside the bounds of used sprites
 	int screen_;
 	int gfx_;
 	int pal_;
+    int layer_ = 0;
 	//int vel;
 
 	public:
@@ -22,6 +23,7 @@ class Sprite {
 	void setFrame(int frame);
 	void setGfx(int gfx);
 	void setPal(int pal);
+    void setLayer(int layer);
 	int getID();
 	int getX();
 	int getY();
@@ -37,7 +39,7 @@ class Sprite {
 
 class MadBomber: public Sprite {
     protected:
-    int vel_;
+    int velX_;
 
     public:
     void velRev();
@@ -54,5 +56,17 @@ class Bucket: public Sprite {
     void trackBucket(Bucket bucketTop);
     void bucketScroll(int screenDis);
 };
+
+class Bomb: public Sprite {
+    protected:
+    int velY_ = 2;
+
+    public:
+    void spawn(int bombCount, int bomberX);
+    void bombScroll();
+    void jumpScreen();
+    void hide();
+};
+
 
 #endif

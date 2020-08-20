@@ -30,6 +30,11 @@ void Sprite::setPal(int setPal) {
 	pal_ = setPal;
 }
 
+void Sprite::setLayer(int layer) {
+    layer_ = layer;
+    NF_SpriteLayer(screen_, ID_, layer_);
+}
+
 int Sprite::getScreen() {
 	return screen_;
 }
@@ -81,23 +86,23 @@ void Sprite::del() {
 
 
 void MadBomber::velRev() {
-    vel_ = vel_ * -1;
+    velX_ = velX_ * -1;
 }
 
 void MadBomber::velRight() {
-    vel_ = abs(vel_);
+    velX_ = abs(velX_);
 }
 
 void MadBomber::velLeft() {
-    vel_ = abs(vel_) * -1;
+    velX_ = abs(velX_) * -1;
 }
 
 void MadBomber::setVel(int vel) {
-    vel_ = vel;
+    velX_ = vel;
 }
 
 int MadBomber::getVel() {
-    return vel_;
+    return velX_;
 }
 
 void MadBomber::screenBounce() {
@@ -128,4 +133,28 @@ void Bucket::bucketScroll(int screenDis) {
     X_ = X_ + screenDis;
     this->screenBind();
     this->updatePos();
+}
+
+
+void Bomb::spawn(int bombCount, int bomberX) {
+    screen_ = 0;
+    ID_ = bombCount + 4;
+    X_ = bomberX+22;
+    Y_ = 100;
+    NF_CreateSprite(0, ID_, 2, 2, X_, Y_);
+}
+
+void Bomb::bombScroll() {
+    move(0, velY_);
+}
+
+void Bomb::jumpScreen() {
+    screen_ = 1;
+    Y_ = -16;
+    NF_CreateSprite(screen_, ID_, 2, 2, X_, Y_);
+}
+
+void Bomb::hide() {
+    NF_ShowSprite(screen_, ID_, false);
+    X_ = 350;
 }

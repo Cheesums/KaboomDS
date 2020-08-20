@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <nds/arm9/paddle.h>
 #include <nf_lib.h>
+#include "sprites.h"
 
 
 
@@ -16,134 +17,6 @@ volatile int paddleDis = 0;
 volatile int screenDis = 0;
 
 volatile int bombCount = 0;
-
-class Sprite {
-	protected:
-	int X;
-	int Y;
-	int frame;
-	int ID;
-	int screen;
-	int gfx;
-	int pal;
-	//int vel;
-
-	public:
-	void setScreen(int setScreen);
-	void setID(int setID);
-	void setX(int setX);
-	void setY(int setY);
-	void setFrame(int setFrame);
-	void setGfx(int setGfx);
-	void setPal(int setPal);
-	int getID();
-	int getX();
-	int getY();
-	int getFrame();
-	int getScreen();
-	/*
-	void velSwitch();
-	void velLeft();
-	void velRight();
-	*/
-	void create();
-	void updatePos();
-	void show(bool setShow);
-	void setPos(int setX, int setY);
-	void move(int setX, int setY);
-	void del();
-};
-
-void Sprite::setScreen(int setScreen) {
-	screen = setScreen;
-}
-
-void Sprite::setID(int setID) {
-	ID = setID;
-}
-
-void Sprite::setX(int setX) {
-	X = setX;
-}
-
-void Sprite::setY(int setY) {
-	Y = setY;
-}
-
-void Sprite::setFrame(int setFrame) {
-	frame = setFrame;
-	NF_SpriteFrame(screen, ID, frame);
-}
-
-void Sprite::setGfx(int setGfx) {
-	gfx = setGfx;
-}
-
-void Sprite::setPal(int setPal) {
-	pal = setPal;
-}
-
-int Sprite::getScreen() {
-	return screen;
-}
-
-int Sprite::getID() {
-	return ID;
-}
-
-int Sprite::getX() {
-	return X;
-}
-
-int Sprite::getY() {
-	return Y;
-}
-
-int Sprite::getFrame() {
-	return frame;
-}
-/*
-void Sprite::velSwitch() {
-	vel = vel * -1;
-}
-
-void Sprite::velLeft() {
-	vel = abs(vel) * -1;
-}
-
-void Sprite::velRight() {
-	vel = abs(vel);
-}
-*/
-void Sprite::create() {
-	NF_CreateSprite(screen, ID, gfx, pal, X , Y);
-}
-
-void Sprite::updatePos(){
-	NF_MoveSprite(screen, ID, X, Y);
-}
-
-void Sprite::show(bool setShow) {
-	NF_ShowSprite(screen, ID, setShow);
-}
-
-void Sprite::setPos(int setX, int setY) {
-	X = setX;
-	Y = setY;
-	this->updatePos();
-}
-
-void Sprite::move(int setX, int setY) {
-	X = X + setX;
-	Y = Y + setY;
-	this->updatePos();
-}
-
-void Sprite::del() {
-	NF_DeleteSprite(screen, ID);
-}
-
-
 
 
 typedef struct{int Screen, ID, X, Y, Frame;} Sprite_Data;

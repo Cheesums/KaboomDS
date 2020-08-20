@@ -50,7 +50,6 @@ int Sprite::getFrame() {
 	return frame_;
 }
 
-
 void Sprite::create() {
 	NF_CreateSprite(screen_, ID_, gfx_, pal_, X_ , Y_);
 }
@@ -80,6 +79,7 @@ void Sprite::del() {
 }
 
 
+
 void MadBomber::velRev() {
     vel_ = vel_ * -1;
 }
@@ -98,4 +98,34 @@ void MadBomber::setVel(int vel) {
 
 int MadBomber::getVel() {
     return vel_;
+}
+
+void MadBomber::screenBounce() {
+    int r = rand()%200;
+    if (X_ > 190 || X_ < 2 || r <2)
+    {
+    this->velRev();
+    }
+}
+
+
+void Bucket::screenBind() {
+    if (X_ < 0)
+    {
+        X_ = 0;
+    } else if (X_ > 192)
+    {
+        X_ = 192;
+    }
+}
+
+void Bucket::trackBucket(Bucket topBucket) {
+    int topBucketX = topBucket.getX();
+    X_ = topBucketX;
+}
+
+void Bucket::bucketScroll(int screenDis) {
+    X_ = X_ + screenDis;
+    this->screenBind();
+    this->updatePos();
 }

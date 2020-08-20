@@ -8,7 +8,6 @@
 
 volatile int paddleState = 0;
 volatile int frameCount = 0;
-//volatile int bomberMult = 1;
 int highBucket = 96;
 
 volatile int paddle = 0;
@@ -22,9 +21,8 @@ typedef struct{int Screen, ID, X, Y, Frame;} Sprite_Data;
 
 void loadGraphics();
 void displayBackgrounds();
-void spawnBuckets(Sprite_Data bucket[]);
+void spawnBuckets(Bucket bucket[]);
 
-Sprite_Data bucket[3];
 Sprite_Data bombs[50];
 
 int main() {
@@ -33,13 +31,10 @@ int main() {
 	displayBackgrounds();
 
 	MadBomber bomber;
+	Bucket bucket[3];
 
 
 //load and display the bomber
-	//Madomber.ID = 0;
-	//bomber.X = 100;
-	//bomber.Y = 52;
-	//NF_CreateSprite(0,bomber.ID, 0, 0, bomber.X ,bomber.Y);
 	bomber.setID(0);
 	bomber.setPos(100, 52);
 	bomber.setScreen(0);
@@ -52,7 +47,7 @@ int main() {
 
 
 //load bucket sprite structs and display 3 buckets
-spawnBuckets(bucket);
+	spawnBuckets(bucket);
 
 
 
@@ -85,8 +80,10 @@ for (int i = 0; i < 50; i++)
 		//scale paddle displacement if buckets move too fast
 		screenDis = paddleDis;
 		//apply displacement to the top bucket
-		bucket[0].X = bucket[0].X + screenDis;
+		//bucket[0].X = bucket[0].X + screenDis;
+
 		//bind buckets within the screen
+		/*
 		if (bucket[0].X < 0)
 		{
 			bucket[0].X = 0;
@@ -94,26 +91,18 @@ for (int i = 0; i < 50; i++)
 		{
 			bucket[0].X = 192;
 		}
+		*/
 		//set all buckets to top bucket's position
 		for (int i = 0; i < 3; i++)
 		{
-			NF_MoveSprite(1, bucket[i].ID, bucket[0].X, bucket[i].Y);
+			//NF_MoveSprite(1, bucket[i].ID, bucket[0].X, bucket[i].Y);
+			bucket[i].bucketScroll(screenDis);
 		}
 		
 		//move the bomber around the screen
 		//make the bomber bounce off the edged of the screen and randomly change direction without bumbing the wall
-		//bomber.X = bomber.X + 2*bomberMult;
-		
-		//bomber.setX(bomber.getX() + 2 * bomberMult);
 		bomber.move(bomber.getVel(), 0);
-
-		int r = rand()%200;
-		if (bomber.getX() > 190 || bomber.getX() < 2 || r <2)
-		{
-			//bomberMult=bomberMult * -1;
-			bomber.velRev();
-		}
-		//NF_MoveSprite(0, bomber.ID, bomber.X, bomber.Y);
+		bomber.screenBounce();
 		bomber.updatePos();
 
 		//drop a bomb every 20 frames
@@ -223,13 +212,17 @@ void displayBackgrounds() {
 }
 
 //Spawn buckets with top bucket at initial cooordinates (X, Y)
-void spawnBuckets(Sprite_Data bucket[]) {
+void spawnBuckets(Bucket bucket[]) {
 	for (int i = 0; i < 3; i++)
 	{
-		bucket[i].X = 10;
-		bucket[i].Y = (highBucket + (32*i));
-		bucket[i].ID = i+1;
-		NF_CreateSprite(1, bucket[i].ID, 1, 1, bucket[i].X, bucket[i].Y);
+		bucket[i].setX(10);
+		bucket[i].setY(highBucket + (32*i));
+		bucket[i].setID(i+1);
+		bucket[i].setScreen(1);
+		bucket[i].setGfx(1);
+		bucket[i].setPal(1);
+		bucket[i].create();
+		//NF_CreateSprite(1, bucket[i].ID, 1, 1, bucket[i].X, bucket[i].Y);
 	}
 
 }

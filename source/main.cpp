@@ -17,13 +17,143 @@ volatile int screenDis = 0;
 
 volatile int bombCount = 0;
 
+class Sprite {
+	protected:
+	int X;
+	int Y;
+	int frame;
+	int ID;
+	int screen;
+	int gfx;
+	int pal;
+	//int vel;
+
+	public:
+	void setScreen(int setScreen);
+	void setID(int setID);
+	void setX(int setX);
+	void setY(int setY);
+	void setFrame(int setFrame);
+	void setGfx(int setGfx);
+	void setPal(int setPal);
+	int getID();
+	int getX();
+	int getY();
+	int getFrame();
+	int getScreen();
+	/*
+	void velSwitch();
+	void velLeft();
+	void velRight();
+	*/
+	void create();
+	void updatePos();
+	void show(bool setShow);
+	void setPos(int setX, int setY);
+	void move(int setX, int setY);
+	void del();
+};
+
+void Sprite::setScreen(int setScreen) {
+	screen = setScreen;
+}
+
+void Sprite::setID(int setID) {
+	ID = setID;
+}
+
+void Sprite::setX(int setX) {
+	X = setX;
+}
+
+void Sprite::setY(int setY) {
+	Y = setY;
+}
+
+void Sprite::setFrame(int setFrame) {
+	frame = setFrame;
+	NF_SpriteFrame(screen, ID, frame);
+}
+
+void Sprite::setGfx(int setGfx) {
+	gfx = setGfx;
+}
+
+void Sprite::setPal(int setPal) {
+	pal = setPal;
+}
+
+int Sprite::getScreen() {
+	return screen;
+}
+
+int Sprite::getID() {
+	return ID;
+}
+
+int Sprite::getX() {
+	return X;
+}
+
+int Sprite::getY() {
+	return Y;
+}
+
+int Sprite::getFrame() {
+	return frame;
+}
+/*
+void Sprite::velSwitch() {
+	vel = vel * -1;
+}
+
+void Sprite::velLeft() {
+	vel = abs(vel) * -1;
+}
+
+void Sprite::velRight() {
+	vel = abs(vel);
+}
+*/
+void Sprite::create() {
+	NF_CreateSprite(screen, ID, gfx, pal, X , Y);
+}
+
+void Sprite::updatePos(){
+	NF_MoveSprite(screen, ID, X, Y);
+}
+
+void Sprite::show(bool setShow) {
+	NF_ShowSprite(screen, ID, setShow);
+}
+
+void Sprite::setPos(int setX, int setY) {
+	X = setX;
+	Y = setY;
+	this->updatePos();
+}
+
+void Sprite::move(int setX, int setY) {
+	X = X + setX;
+	Y = Y + setY;
+	this->updatePos();
+}
+
+void Sprite::del() {
+	NF_DeleteSprite(screen, ID);
+}
+
+
+
+
 typedef struct{int Screen, ID, X, Y, Frame;} Sprite_Data;
 
 void loadGraphics();
 void displayBackgrounds();
 void spawnBuckets(Sprite_Data bucket[]);
 
-Sprite_Data bomber;
+//Sprite_Data bomber;
+
 Sprite_Data bucket[3];
 Sprite_Data bombs[50];
 
@@ -32,14 +162,26 @@ int main() {
 	loadGraphics();
 	displayBackgrounds();
 
-
-//load and display the bomber
+	Sprite bomber;
+	/*
 	bomber.ID = 0;
 	bomber.X = 100;
 	bomber.Y = 52;
-	NF_CreateSprite(0,bomber.ID, 0, 0, bomber.X ,bomber.Y);
+	*/
+
+//load and display the bomber
+	//Madomber.ID = 0;
+	//bomber.X = 100;
+	//bomber.Y = 52;
+	//NF_CreateSprite(0,bomber.ID, 0, 0, bomber.X ,bomber.Y);
+	bomber.setID(0);
+	bomber.setPos(100, 52);
+	bomber.setScreen(0);
+	bomber.setGfx(0);
+	bomber.setPal(0);
+	bomber.create();
 //change the bomber sprite to the frame holding the bomb
-	NF_SpriteFrame(0, bomber.ID, 1);
+	NF_SpriteFrame(0, bomber.getID(), 1);
 
 
 //load bucket sprite structs and display 3 buckets
@@ -93,20 +235,24 @@ for (int i = 0; i < 50; i++)
 		
 		//move the bomber around the screen
 		//make the bomber bounce off the edged of the screen and randomly change direction without bumbing the wall
-		bomber.X = bomber.X + 2*bomberMult;
+		//bomber.X = bomber.X + 2*bomberMult;
+		
+		bomber.setX(bomber.getX() + 2 * bomberMult);
+
 		int r = rand()%200;
-		if (bomber.X > 190 || bomber.X < 2 || r <2)
+		if (bomber.getX() > 190 || bomber.getX() < 2 || r <2)
 		{
 			bomberMult=bomberMult * -1;
 		}
-		NF_MoveSprite(0, bomber.ID, bomber.X, bomber.Y);
+		//NF_MoveSprite(0, bomber.ID, bomber.X, bomber.Y);
+		bomber.updatePos();
 
 		//drop a bomb every 20 frames
 		if (frameCount%20 == 0)
 		{
 			bombs[bombCount].Screen = 0;
 			bombs[bombCount].ID = bombCount + 4;
-			bombs[bombCount].X = bomber.X;
+			bombs[bombCount].X = bomber.getX();
 			bombs[bombCount].Y = 50;
 			NF_CreateSprite(0, bombs[bombCount].ID, 2, 2, bombs[bombCount].X, bombs[bombCount].Y);
 			bombCount++;
@@ -180,8 +326,8 @@ void loadGraphics() {
 	NF_LoadTiledBg("bg/backgroundBot", "backgroundBot", 256, 256);
 
 //Load bomber sprite
-	NF_LoadSpriteGfx("sprite/bomberSprite", bomber.ID, 64, 64);
-	NF_LoadSpritePal("sprite/bomberSprite", bomber.ID);
+	NF_LoadSpriteGfx("sprite/bomberSprite", 0, 64, 64);
+	NF_LoadSpritePal("sprite/bomberSprite", 0);
 	NF_VramSpriteGfx(0, 0, 0, false);
 	NF_VramSpritePal(0, 0, 0);
 

@@ -8,7 +8,7 @@
 
 volatile int paddleState = 0;
 volatile int frameCount = 0;
-volatile int bomberMult = 1;
+//volatile int bomberMult = 1;
 int highBucket = 96;
 
 volatile int paddle = 0;
@@ -18,14 +18,11 @@ volatile int screenDis = 0;
 
 volatile int bombCount = 0;
 
-
 typedef struct{int Screen, ID, X, Y, Frame;} Sprite_Data;
 
 void loadGraphics();
 void displayBackgrounds();
 void spawnBuckets(Sprite_Data bucket[]);
-
-//Sprite_Data bomber;
 
 Sprite_Data bucket[3];
 Sprite_Data bombs[50];
@@ -35,12 +32,8 @@ int main() {
 	loadGraphics();
 	displayBackgrounds();
 
-	Sprite bomber;
-	/*
-	bomber.ID = 0;
-	bomber.X = 100;
-	bomber.Y = 52;
-	*/
+	MadBomber bomber;
+
 
 //load and display the bomber
 	//Madomber.ID = 0;
@@ -55,6 +48,7 @@ int main() {
 	bomber.create();
 //change the bomber sprite to the frame holding the bomb
 	NF_SpriteFrame(0, bomber.getID(), 1);
+	bomber.setVel(2);
 
 
 //load bucket sprite structs and display 3 buckets
@@ -110,12 +104,14 @@ for (int i = 0; i < 50; i++)
 		//make the bomber bounce off the edged of the screen and randomly change direction without bumbing the wall
 		//bomber.X = bomber.X + 2*bomberMult;
 		
-		bomber.setX(bomber.getX() + 2 * bomberMult);
+		//bomber.setX(bomber.getX() + 2 * bomberMult);
+		bomber.move(bomber.getVel(), 0);
 
 		int r = rand()%200;
 		if (bomber.getX() > 190 || bomber.getX() < 2 || r <2)
 		{
-			bomberMult=bomberMult * -1;
+			//bomberMult=bomberMult * -1;
+			bomber.velRev();
 		}
 		//NF_MoveSprite(0, bomber.ID, bomber.X, bomber.Y);
 		bomber.updatePos();

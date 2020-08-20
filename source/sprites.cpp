@@ -1,91 +1,101 @@
 #include "sprites.h"
 
 
-void Sprite::setScreen(int setScreen) {
-	screen = setScreen;
+void Sprite::setScreen(int screen) {
+	screen_ = screen;
 }
 
 void Sprite::setID(int setID) {
-	ID = setID;
+	ID_ = setID;
 }
 
 void Sprite::setX(int setX) {
-	X = setX;
+	X_ = setX;
 }
 
 void Sprite::setY(int setY) {
-	Y = setY;
+	Y_ = setY;
 }
 
 void Sprite::setFrame(int setFrame) {
-	frame = setFrame;
-	NF_SpriteFrame(screen, ID, frame);
+	frame_ = setFrame;
+	NF_SpriteFrame(screen_, ID_, frame_);
 }
 
 void Sprite::setGfx(int setGfx) {
-	gfx = setGfx;
+	gfx_ = setGfx;
 }
 
 void Sprite::setPal(int setPal) {
-	pal = setPal;
+	pal_ = setPal;
 }
 
 int Sprite::getScreen() {
-	return screen;
+	return screen_;
 }
 
 int Sprite::getID() {
-	return ID;
+	return ID_;
 }
 
 int Sprite::getX() {
-	return X;
+	return X_;
 }
 
 int Sprite::getY() {
-	return Y;
+	return Y_;
 }
 
 int Sprite::getFrame() {
-	return frame;
-}
-/*
-void Sprite::velSwitch() {
-	vel = vel * -1;
+	return frame_;
 }
 
-void Sprite::velLeft() {
-	vel = abs(vel) * -1;
-}
 
-void Sprite::velRight() {
-	vel = abs(vel);
-}
-*/
 void Sprite::create() {
-	NF_CreateSprite(screen, ID, gfx, pal, X , Y);
+	NF_CreateSprite(screen_, ID_, gfx_, pal_, X_ , Y_);
 }
 
 void Sprite::updatePos(){
-	NF_MoveSprite(screen, ID, X, Y);
+	NF_MoveSprite(screen_, ID_, X_, Y_);
 }
 
-void Sprite::show(bool setShow) {
-	NF_ShowSprite(screen, ID, setShow);
+void Sprite::show(bool show) {
+	NF_ShowSprite(screen_, ID_, show);
 }
 
-void Sprite::setPos(int setX, int setY) {
-	X = setX;
-	Y = setY;
+void Sprite::setPos(int X, int Y) {
+	X_ = X;
+	Y_ = Y;
 	this->updatePos();
 }
 
-void Sprite::move(int setX, int setY) {
-	X = X + setX;
-	Y = Y + setY;
+void Sprite::move(int X, int Y) {
+	X_ = X_ + X;
+	Y_ = Y_ + Y;
 	this->updatePos();
 }
 
 void Sprite::del() {
-	NF_DeleteSprite(screen, ID);
+	NF_DeleteSprite(screen_, ID_);
+}
+
+
+void MadBomber::velRev() {
+    vel_ = vel_ * -1;
+}
+
+void MadBomber::velRight() {
+    vel_ = abs(vel_);
+}
+
+void MadBomber::velLeft() {
+    vel_ = abs(vel_) * -1;
+}
+
+void MadBomber::setVel(int vel) {
+    vel_ = vel;
+}
+
+int MadBomber::getVel() {
+    return vel_;
 }

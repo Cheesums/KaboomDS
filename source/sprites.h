@@ -5,39 +5,46 @@
 
 class Sprite {
 	protected:
-	int X;
-	int Y;
-	int frame;
-	int ID;
-	int screen;
-	int gfx;
-	int pal;
+	int X_;
+	int Y_;
+	int frame_;
+	int ID_;
+	int screen_;
+	int gfx_;
+	int pal_;
 	//int vel;
 
 	public:
-	void setScreen(int setScreen);
-	void setID(int setID);
-	void setX(int setX);
-	void setY(int setY);
-	void setFrame(int setFrame);
-	void setGfx(int setGfx);
-	void setPal(int setPal);
+	void setScreen(int screen);
+	void setID(int ID);
+	void setX(int X);
+	void setY(int Y);
+	void setFrame(int frame);
+	void setGfx(int gfx);
+	void setPal(int pal);
 	int getID();
 	int getX();
 	int getY();
 	int getFrame();
 	int getScreen();
-	/*
-	void velSwitch();
-	void velLeft();
-	void velRight();
-	*/
 	void create();
 	void updatePos();
-	void show(bool setShow);
-	void setPos(int setX, int setY);
-	void move(int setX, int setY);
+	void show(bool show);
+	void setPos(int X, int Y);
+	void move(int X, int Y);
 	void del();
+};
+
+class MadBomber: public Sprite {
+    protected:
+    int vel_;
+
+    public:
+    void velRev();
+    void velRight();
+    void velLeft();
+    void setVel(int vel);
+    int getVel();
 };
 
 #endif

@@ -20,14 +20,15 @@ volatile int bombCount = 0;
 
 typedef struct{int Screen, ID, X, Y, Frame;} Sprite_Data;
 
+extern MadBomber bomber;
+extern Bucket bucket[3];
 
 int main() {
 
-	MadBomber bomber;
-	Bucket bucket[3];
 	Bomb bomb[50];
 
-	setup(bomber, bucket, bucketTop); //load and create background and sprites and set initial values
+	setup(bucketTop); //load and create background and sprites and set initial values
+
 
 //set paddle to have initial displacement of 0
 	lastPaddle = paddleRead();
@@ -65,7 +66,7 @@ int main() {
 		//drop a bomb every 20 frames and keep track of each bomb
 		if (frameCount%20 == 0)
 		{
-			bomb[bombCount].spawn(bombCount, bomber.getX());
+			bomb[bombCount].spawn(bombCount);
 			bombCount++;
 			if (bombCount == 50)
 			{

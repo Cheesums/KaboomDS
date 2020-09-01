@@ -4,8 +4,8 @@
 
 void loadGraphics();
 void displayBackgrounds();
-void spawnBuckets(Bucket bucket[], int bucketTop);
-void setup(MadBomber &bomber, Bucket bucket[], int bucketTop);
+void spawnBuckets(int bucketTop);
+void setup( int bucketTop);
 
 
 #endif

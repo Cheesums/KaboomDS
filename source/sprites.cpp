@@ -136,10 +136,13 @@ void Bucket::bucketScroll(int screenDis) {
 }
 
 
-void Bomb::spawn(int bombCount, int bomberX) {
+MadBomber bomber;
+Bucket bucket[3];
+
+void Bomb::spawn(int bombCount) {
     screen_ = 0;
     ID_ = bombCount + 4;
-    X_ = bomberX+22;
+    X_ = bomber.getX()+22;
     Y_ = 100;
     NF_CreateSprite(0, ID_, 2, 2, X_, Y_);
 }

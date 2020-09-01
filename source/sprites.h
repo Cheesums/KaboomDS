@@ -3,6 +3,8 @@
 
 #include <nf_lib.h>
 
+
+
 class Sprite {
 	protected:
 	int X_;
@@ -62,11 +64,10 @@ class Bomb: public Sprite {
     int velY_ = 2;
 
     public:
-    void spawn(int bombCount, int bomberX);
+    void spawn(int bombCount);
     void bombScroll();
     void jumpScreen();
     void hide();
 };
-
 
 #endif

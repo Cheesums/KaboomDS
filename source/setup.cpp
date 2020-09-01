@@ -1,5 +1,8 @@
 #include "setup.h"
 
+extern MadBomber bomber;
+extern Bucket bucket[3];
+
 void loadGraphics() {
 
 //Prepare both screens for 2D graphics mode
@@ -50,7 +53,7 @@ void displayBackgrounds() {
 }
 
 //Spawn buckets with top bucket at initial cooordinates (X, Y)
-void spawnBuckets(Bucket bucket[], int bucketTop) {
+void spawnBuckets(int bucketTop) {
 	for (int i = 0; i < 3; i++)
 	{
 		bucket[i].setX(10);
@@ -64,12 +67,12 @@ void spawnBuckets(Bucket bucket[], int bucketTop) {
 	}
 }
 
-void setup(MadBomber &bomber, Bucket bucket[], int bucketTop) {
+void setup(int bucketTop) {
     loadGraphics();
     displayBackgrounds();    
 
     //populate and spawn all buckets in the array
-    spawnBuckets(bucket, bucketTop);
+    spawnBuckets(bucketTop);
 
     //create the bober and set initial values
 	bomber.setID(0);

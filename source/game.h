@@ -2,6 +2,6 @@
 #define GAME_H
 #include "sprites.h"
 
-void collision(Bomb bomb);
+void collision(Bomb &bomb);
 
 #endif

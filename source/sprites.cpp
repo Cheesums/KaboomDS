@@ -1,5 +1,4 @@
 #include "sprites.h"
-
 #include <nf_lib.h>
 
 void Sprite::setScreen(int screen) {
@@ -56,8 +55,13 @@ int Sprite::getFrame() {
 	return frame_;
 }
 
+bool Sprite::isSpawned() {
+    return spawned;
+}
+
 void Sprite::create() {
 	NF_CreateSprite(screen_, ID_, gfx_, pal_, X_ , Y_);
+    spawned = true;
 }
 
 void Sprite::updatePos(){
@@ -81,7 +85,11 @@ void Sprite::move(int X, int Y) {
 }
 
 void Sprite::del() {
-	NF_DeleteSprite(screen_, ID_);
+    if (spawned)
+    {
+        NF_DeleteSprite(screen_, ID_);
+        spawned = false;
+    }
 }
 
 
@@ -146,6 +154,7 @@ void Bomb::spawn(int bombCount) {
     X_ = bomber.getX()+22;
     Y_ = 100;
     NF_CreateSprite(0, ID_, 2, 2, X_, Y_);
+    spawned = true;
 }
 
 void Bomb::bombScroll() {

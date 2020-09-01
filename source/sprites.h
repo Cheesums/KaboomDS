@@ -11,7 +11,8 @@ class Sprite {
 	int gfx_;
 	int pal_;
     int layer_ = 0;
-	//int vel;
+	bool spawned = false;
+	int vel;
 
 	public:
 	void setScreen(int screen);
@@ -27,6 +28,7 @@ class Sprite {
 	int getY();
 	int getFrame();
 	int getScreen();
+	bool isSpawned();
 	void create();
 	void updatePos();
 	void show(bool show);

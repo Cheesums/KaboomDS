@@ -74,31 +74,33 @@ int main() {
 		//Move bombs downscreen and recreate bombs on the bottom screen when they fall off of the top screen.
 		//Only move bombs if they are within the expected bomb ID range
 		//Hide bombs and move them offscreen when they fall off of the bottom screen.
+
+		
 		for (int i = 0; i < 50; i++)
 		{
-			if (bomb[i].getID() < 55) //only manipulate after a bomb object has been filled (i.e. ID brought into the normal range)
+			if (bomb[i].isSpawned()) //only manipulate after a bomb object has been filled (i.e. isSpawned is true)
 			{
 				bomb[i].bombScroll();
-			}
-
-			if (bomb[i].getScreen() == 1)
-			{
-				collision(bomb[i]);
-			}
-
-			if (bomb[i].getY() > 198)
-			{
-				if (bomb[i].getScreen() < 1)
+			
+				if (bomb[i].getScreen() == 1)
 				{
-					bomb[i].jumpScreen();
-				}else
+					collision(bomb[i]);
+				}
+
+				if (bomb[i].getY() > 198)
 				{
-					bomb[i].hide();
+					if (bomb[i].getScreen() < 1)
+					{
+						bomb[i].jumpScreen();
+					}else
+					{
+						bomb[i].del();
+					}
 				}
 			}
 		}
 		
-		sprintf(scoreString, "%d", scoreInt);
+		sprintf(scoreString, "score %d", scoreInt);
 		NF_WriteText16(0, 0, 0, 0, scoreString);
 		
 

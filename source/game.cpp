@@ -12,7 +12,7 @@ extern int scoreInt;
 
 extern Bucket bucket[3];
 
-void collision(Bomb bomb) {
+void collision(Bomb &bomb) {
 
     int bucketBot = BUCKET_TOP + 3*BUCKET_OFFSET;
 
@@ -27,7 +27,7 @@ void collision(Bomb bomb) {
         {
             if ((bombY+BOMB_HEIGHT >= bucketTop) && (bombY <= bucketTop+BUCKET_HEIGHT))
             {
-                bomb.hide();
+                bomb.del();
                 scoreInt++;
             }
             

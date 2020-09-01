@@ -1,6 +1,4 @@
 {
-    // See https://go.microsoft.com/fwlink/?LinkId=733558
-    // for the documentation about the tasks.json format
     "version": "2.0.0",
     "tasks": [
         {
@@ -75,6 +73,27 @@
                 "imagename eq DeSmuME*"
             ],
             "problemMatcher": []
+        },
+        {
+            "type": "shell",
+            "label": "C/C++: arm-none-eabi-g++.exe build active file",
+            "command": "C:\\devkitPro\\devkitARM\\bin\\arm-none-eabi-g++.exe",
+            "args": [
+                "-g",
+                "${file}",
+                "-o",
+                "${fileDirname}\\${fileBasenameNoExtension}.exe"
+            ],
+            "options": {
+                "cwd": "C:\\devkitPro\\devkitARM\\bin"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
         }
     ]
 }

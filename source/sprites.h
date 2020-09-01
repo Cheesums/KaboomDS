@@ -1,10 +1,6 @@
 #ifndef SPRITES_H
 #define SPRITES_H
 
-#include <nf_lib.h>
-
-
-
 class Sprite {
 	protected:
 	int X_;

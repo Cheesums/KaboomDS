@@ -1,7 +1,12 @@
 #include "setup.h"
+#include <nf_lib.h>
+
+
 
 extern MadBomber bomber;
 extern Bucket bucket[3];
+
+extern int BUCKET_TOP;
 
 void loadGraphics() {
 
@@ -19,6 +24,8 @@ void loadGraphics() {
 	NF_InitSpriteBuffers();
 	NF_InitSpriteSys(0);
 	NF_InitSpriteSys(1);
+//Initialize top screen for text
+	NF_InitTextSys(0);
 
 //Load a background for each screen
 	NF_LoadTiledBg("bg/backgroundTop", "backgroundTop", 256, 256);
@@ -43,21 +50,27 @@ void loadGraphics() {
 	NF_VramSpritePal(0, 2, 2);
 	NF_VramSpriteGfx(1, 2, 2, false);
 	NF_VramSpritePal(1, 2, 2);
+
+//Load the font to be used on the text layer of the top screen
+NF_LoadTextFont16("fnt/font16", "font", 256, 256, 0);
+
 }
 
 void displayBackgrounds() {
 	//Create backgrounds
 	NF_CreateTiledBg(0, 3, "backgroundTop");
 	NF_CreateTiledBg(1, 3, "backgroundBot");
+	NF_CreateTextLayer16(0, 0, 0, "font");
 
 }
 
 //Spawn buckets with top bucket at initial cooordinates (X, Y)
-void spawnBuckets(int bucketTop) {
+void spawnBuckets() {
+
 	for (int i = 0; i < 3; i++)
 	{
 		bucket[i].setX(10);
-		bucket[i].setY(bucketTop + (32*i));
+		bucket[i].setY(BUCKET_TOP + (32*i));
 		bucket[i].setID(i+1);
 		bucket[i].setScreen(1);
 		bucket[i].setGfx(1);
@@ -67,12 +80,12 @@ void spawnBuckets(int bucketTop) {
 	}
 }
 
-void setup(int bucketTop) {
+void setup() {
     loadGraphics();
     displayBackgrounds();    
 
     //populate and spawn all buckets in the array
-    spawnBuckets(bucketTop);
+    spawnBuckets();
 
     //create the bober and set initial values
 	bomber.setID(0);

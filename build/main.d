@@ -78,7 +78,8 @@ main.o: C:/devkitPro/Projects/Kaboom!DS/source/main.cpp \
  C:/devkitPro/Projects/Kaboom!DS/nflib/include/nf_sprite3d.h \
  C:/devkitPro/Projects/Kaboom!DS/source/sprites.h \
  C:/devkitPro/Projects/Kaboom!DS/source/setup.h \
- C:/devkitPro/Projects/Kaboom!DS/source/input.h
+ C:/devkitPro/Projects/Kaboom!DS/source/input.h \
+ C:/devkitPro/Projects/Kaboom!DS/source/game.h
 
 C:/devkitPro/libnds/include/nds.h:
 
@@ -239,3 +240,5 @@ C:/devkitPro/Projects/Kaboom!DS/source/sprites.h:
 C:/devkitPro/Projects/Kaboom!DS/source/setup.h:
 
 C:/devkitPro/Projects/Kaboom!DS/source/input.h:
+
+C:/devkitPro/Projects/Kaboom!DS/source/game.h:

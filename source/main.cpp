@@ -5,19 +5,29 @@
 #include "sprites.h"
 #include "setup.h"
 #include "input.h"
+#include "game.h"
 
 
 
 volatile int paddleState = 0;
 volatile int frameCount = 0;
-int bucketTop = 96;
 
-//volatile int paddle = 0;
-volatile int lastPaddle = 0;
+volatile int scoreInt = 0;
+
+int BUCKET_TOP = 96;
+int BUCKET_HEIGHT = 16;
+int BUCKET_WIDTH  = 64;
+int BUCKET_OFFSET = 32;
+
+int BOMB_WIDTH = 16;
+int BOMB_HEIGHT = 16;
+
 volatile int paddleDis = 0;
-volatile int screenDis = 0;
 
 volatile int bombCount = 0;
+
+char scoreChar = '0';
+char* scoreString;
 
 extern MadBomber bomber;
 extern Bucket bucket[3];
@@ -28,33 +38,19 @@ int main() {
 
 	Bomb bomb[50];
 
-	setup(bucketTop); //load and create background and sprites and set initial values
+	setup(); //load and create background and sprites and set initial values
 
-
-//set paddle to have initial displacement of 0
-//	lastPaddle = paddleRead();
 
 //perform everything in loop once each frame
 	while(1) {
-		//calculate paddle displacement
-		//check and correct for wraparound
-		// paddle = paddleRead();
-		// paddleDis = paddle - lastPaddle;
-		// lastPaddle = paddle;
-		// if (paddleDis > 3000)
-		// {
-		// 	paddleDis = paddleDis - 4095;
-		// } else if (paddleDis <-3000)
-		// {
-		// 	paddleDis = paddleDis + 4095;
-		// }
+		
+		//get paddle displacement
 		paddleDis = paddle.getPaddleDis();
 
 
 		//move all buckets according to the paddle
 		for (int i = 0; i < 3; i++)
 		{
-			//NF_MoveSprite(1, bucket[i].ID, bucket[0].X, bucket[i].Y);
 			bucket[i].bucketScroll(paddleDis);
 		}
 		
@@ -84,6 +80,12 @@ int main() {
 			{
 				bomb[i].bombScroll();
 			}
+
+			if (bomb[i].getScreen() == 1)
+			{
+				collision(bomb[i]);
+			}
+
 			if (bomb[i].getY() > 198)
 			{
 				if (bomb[i].getScreen() < 1)
@@ -96,10 +98,13 @@ int main() {
 			}
 		}
 		
+		sprintf(scoreString, "%d", scoreInt);
+		NF_WriteText16(0, 0, 0, 0, scoreString);
 		
 
 		frameCount ++;
-		//update sprites on both screens
+		//update both screens
+		NF_UpdateTextLayers();
 		NF_SpriteOamSet(0);
 		NF_SpriteOamSet(1);
 		swiWaitForVBlank();

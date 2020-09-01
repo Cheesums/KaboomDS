@@ -4,8 +4,8 @@
 
 void loadGraphics();
 void displayBackgrounds();
-void spawnBuckets(int bucketTop);
-void setup( int bucketTop);
+void spawnBuckets();
+void setup();
 
 
 #endif

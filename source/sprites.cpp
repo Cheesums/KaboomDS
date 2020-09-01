@@ -1,5 +1,6 @@
 #include "sprites.h"
 
+#include <nf_lib.h>
 
 void Sprite::setScreen(int screen) {
 	screen_ = screen;

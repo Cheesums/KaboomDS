@@ -4,6 +4,7 @@
 #include <nf_lib.h>
 #include "sprites.h"
 #include "setup.h"
+#include "input.h"
 
 
 
@@ -11,17 +12,17 @@ volatile int paddleState = 0;
 volatile int frameCount = 0;
 int bucketTop = 96;
 
-volatile int paddle = 0;
+//volatile int paddle = 0;
 volatile int lastPaddle = 0;
 volatile int paddleDis = 0;
 volatile int screenDis = 0;
 
 volatile int bombCount = 0;
 
-typedef struct{int Screen, ID, X, Y, Frame;} Sprite_Data;
-
 extern MadBomber bomber;
 extern Bucket bucket[3];
+
+Paddle paddle;
 
 int main() {
 
@@ -31,30 +32,30 @@ int main() {
 
 
 //set paddle to have initial displacement of 0
-	lastPaddle = paddleRead();
+//	lastPaddle = paddleRead();
 
 //perform everything in loop once each frame
 	while(1) {
 		//calculate paddle displacement
 		//check and correct for wraparound
-		paddle = paddleRead();
-		paddleDis = paddle - lastPaddle;
-		lastPaddle = paddle;
-		if (paddleDis > 3000)
-		{
-			paddleDis = paddleDis - 4095;
-		} else if (paddleDis <-3000)
-		{
-			paddleDis = paddleDis + 4095;
-		}
-		//scale paddle displacement if buckets move too fast
-		screenDis = paddleDis;
+		// paddle = paddleRead();
+		// paddleDis = paddle - lastPaddle;
+		// lastPaddle = paddle;
+		// if (paddleDis > 3000)
+		// {
+		// 	paddleDis = paddleDis - 4095;
+		// } else if (paddleDis <-3000)
+		// {
+		// 	paddleDis = paddleDis + 4095;
+		// }
+		paddleDis = paddle.getPaddleDis();
+
 
 		//move all buckets according to the paddle
 		for (int i = 0; i < 3; i++)
 		{
 			//NF_MoveSprite(1, bucket[i].ID, bucket[0].X, bucket[i].Y);
-			bucket[i].bucketScroll(screenDis);
+			bucket[i].bucketScroll(paddleDis);
 		}
 		
 		//move the bomber around the screen

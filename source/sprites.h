@@ -12,7 +12,6 @@ class Sprite {
 	int pal_;
     int layer_ = 0;
 	bool spawned = false;
-	int vel;
 
 	public:
 	void setScreen(int screen);
@@ -60,12 +59,16 @@ class Bucket: public Sprite {
 class Bomb: public Sprite {
     protected:
     int velY_ = 2;
+	bool finalBomb_ = false;
 
     public:
     void spawn(int bombCount);
     void bombScroll();
     void jumpScreen();
     void hide();
+	void setFinal();
+	void clearFinal();
+	bool isFinal();
 };
 
 #endif

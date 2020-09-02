@@ -171,3 +171,15 @@ void Bomb::hide() {
     NF_ShowSprite(screen_, ID_, false);
     X_ = 350;
 }
+
+void Bomb::setFinal() {
+    finalBomb_ = true;
+}
+
+void Bomb::clearFinal() {
+    finalBomb_ = false;
+}
+
+bool Bomb::isFinal() {
+    return finalBomb_;
+}

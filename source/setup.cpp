@@ -87,7 +87,7 @@ void setup() {
     //populate and spawn all buckets in the array
     spawnBuckets();
 
-    //create the bober and set initial values
+    //create the bomber and set initial values
 	bomber.setID(0);
 	bomber.setPos(100, 52);
 	bomber.setScreen(0);

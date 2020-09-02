@@ -13,6 +13,7 @@ class Paddle {
     int paddleDis_ = 0;
 
     public:
+    void setZero();
     int getPaddleDis();
     bool isInserted();
 };

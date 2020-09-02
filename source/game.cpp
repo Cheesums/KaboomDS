@@ -9,6 +9,8 @@ extern int BOMB_WIDTH;
 extern int BOMB_HEIGHT;
 
 extern int scoreInt;
+extern int gameState;
+extern int currentRound;
 
 extern Bucket bucket[3];
 
@@ -28,6 +30,13 @@ void collision(Bomb &bomb) {
             if ((bombY+BOMB_HEIGHT >= bucketTop) && (bombY <= bucketTop+BUCKET_HEIGHT))
             {
                 bomb.del();
+                if (bomb.isFinal())
+                {
+                    bomb.clearFinal();
+                    gameState = 0;
+
+                }
+                
                 scoreInt++;
             }
             

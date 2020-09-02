@@ -20,3 +20,7 @@ int Paddle::getPaddleDis() {
 
     return paddleDis_;
 }
+
+void Paddle::setZero() {
+	lastRead_ = paddleRead();
+}

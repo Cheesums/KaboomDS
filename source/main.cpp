@@ -26,9 +26,25 @@ volatile int paddleDis = 0;
 
 volatile int bombCount = 0;
 
-char scoreChar = '0';
 char* scoreString;
 
+int gameState = 0;
+int currentRound = 0;
+struct RoundVar 
+{
+	int bomberVelX;
+	int bombValue;
+	int bombFrequency;
+	int bombVelY;
+	int bombTarget;
+} roundVar[9];
+
+int roundBombCurrent = 0;
+
+int buttonPressed = 0;
+int Pressed;
+int Held;
+int Released;
 extern MadBomber bomber;
 extern Bucket bucket[3];
 
@@ -38,69 +54,126 @@ int main() {
 
 	Bomb bomb[50];
 
+	for (int i = 1; i < 9; i++)
+	{
+		roundVar[i].bomberVelX = i + 1;
+		roundVar[i].bombValue = i + 1;
+		roundVar[i].bombFrequency = 21 - i;
+		roundVar[i].bombVelY = i + 1;
+		if (i<7)
+		{		
+			roundVar[i].bombTarget = i*10;
+		} else
+		{
+			roundVar[i].bombTarget = 75 + 25*(i-6);
+		}
+		
+	}
+	
+
 	setup(); //load and create background and sprites and set initial values
 
 
 //perform everything in loop once each frame
 	while(1) {
-		
-		//get paddle displacement
-		paddleDis = paddle.getPaddleDis();
+		scanKeys();
+		Pressed = keysDown();
+		Held = keysHeld();
+		Released = keysUp();
+		buttonPressed = keysHeld();
 
 
-		//move all buckets according to the paddle
-		for (int i = 0; i < 3; i++)
+		//Determine the state of the game; pre-game, between rounds, or in a roundVar
+		switch (gameState)
 		{
-			bucket[i].bucketScroll(paddleDis);
-		}
-		
-		//move the bomber around the screen
-		//make the bomber bounce off the edged of the screen and randomly change direction without bumbing the wall
-		bomber.move(bomber.getVel(), 0);
-		bomber.screenBounce();
-		bomber.updatePos();
-
-		//drop a bomb every 20 frames and keep track of each bomb
-		if (frameCount%20 == 0)
-		{
-			bomb[bombCount].spawn(bombCount);
-			bombCount++;
-			if (bombCount == 50)
+		case 0:
+			if (KEY_A & Pressed)
 			{
-				bombCount = 0;
-			}
-		}
-		
-		//Move bombs downscreen and recreate bombs on the bottom screen when they fall off of the top screen.
-		//Only move bombs if they are within the expected bomb ID range
-		//Hide bombs and move them offscreen when they fall off of the bottom screen.
-
-		
-		for (int i = 0; i < 50; i++)
-		{
-			if (bomb[i].isSpawned()) //only manipulate after a bomb object has been filled (i.e. isSpawned is true)
-			{
-				bomb[i].bombScroll();
-			
-				if (bomb[i].getScreen() == 1)
+				paddle.setZero();
+				currentRound++;
+				if (currentRound > 8)
 				{
-					collision(bomb[i]);
+					currentRound = 8;
 				}
+				roundBombCurrent = 0;
+				gameState = 1;
+			}
+			
+			break;
+		case 1:
 
-				if (bomb[i].getY() > 198)
+
+			//get paddle displacement
+			paddleDis = paddle.getPaddleDis();
+
+			//move all buckets according to the paddle
+			for (int i = 0; i < 3; i++)
+			{
+				bucket[i].bucketScroll(paddleDis);
+			}
+			
+			//move the bomber around the screen
+			//make the bomber bounce off the edged of the screen and randomly change direction without bumbing the wall
+			bomber.move(bomber.getVel(), 0);
+			bomber.screenBounce();
+			bomber.updatePos();
+
+			//drop a bomb every 20 frames and keep track of each bomb
+			if ((frameCount%20 == 0) && (roundBombCurrent < roundVar[currentRound].bombTarget))
+			{
+				
+				bomb[bombCount].spawn(bombCount);
+				roundBombCurrent++;
+				if (roundBombCurrent >= roundVar[currentRound].bombTarget)
 				{
-					if (bomb[i].getScreen() < 1)
+					bomb[bombCount].setFinal();
+					
+				}
+				bombCount++;
+
+				if (bombCount == 50)
+				{
+					bombCount = 0;
+				}
+			}
+			
+			//Move bombs downscreen and recreate bombs on the bottom screen when they fall off of the top screen.
+			//Only move bombs if they are within the expected bomb ID range
+			//Hide bombs and move them offscreen when they fall off of the bottom screen.
+
+			
+			for (int i = 0; i < 50; i++)
+			{
+				if (bomb[i].isSpawned()) //only manipulate after a bomb object has been filled (i.e. isSpawned is true)
+				{
+					bomb[i].bombScroll();
+				
+					if (bomb[i].getScreen() == 1)
 					{
-						bomb[i].jumpScreen();
-					}else
+						collision(bomb[i]);
+					}
+
+					if (bomb[i].getY() > 198)
 					{
-						bomb[i].del();
+						if (bomb[i].getScreen() < 1)
+						{
+							bomb[i].jumpScreen();
+						}else
+						{
+							bomb[i].del();
+							bomb[i].clearFinal();
+						}
 					}
 				}
 			}
+			break;
+
+		default:
+			gameState = 0;
+			break;
 		}
-		
-		sprintf(scoreString, "score %d", scoreInt);
+
+		sprintf(scoreString, "score %i, round %i, target %i,   current %i", scoreInt, currentRound, roundVar[currentRound].bombTarget, roundBombCurrent);
 		NF_WriteText16(0, 0, 0, 0, scoreString);
 		
 

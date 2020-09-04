@@ -63,7 +63,7 @@ class Bomb: public Sprite {
 
     public:
     void spawn(int bombCount);
-    void bombScroll();
+    void bombScroll(int bombVelY);
     void jumpScreen();
     void hide();
 	void setFinal();

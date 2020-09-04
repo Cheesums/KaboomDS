@@ -157,8 +157,8 @@ void Bomb::spawn(int bombCount) {
     spawned = true;
 }
 
-void Bomb::bombScroll() {
-    move(0, velY_);
+void Bomb::bombScroll(int bombVelY) {
+    move(0, bombVelY);
 }
 
 void Bomb::jumpScreen() {

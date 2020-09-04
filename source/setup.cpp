@@ -90,8 +90,8 @@ void setup() {
 	for (int i = 1; i < 9; i++)
 	{
 		roundVar[i].bomberVelX = i + 1;
-		roundVar[i].bombValue = i + 1;
-		roundVar[i].bombFrequency = 21 - i;
+		roundVar[i].bombValue = i;
+		roundVar[i].bombFrequency = 21 - 2*i;
 		roundVar[i].bombVelY = i + 1;
 		if (i<6)
 		{		

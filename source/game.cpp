@@ -1,4 +1,5 @@
 #include "game.h"
+#include "setup.h"
 
 extern int BUCKET_TOP;
 extern int BUCKET_HEIGHT;
@@ -13,6 +14,7 @@ extern int gameState;
 extern int currentRound;
 
 extern Bucket bucket[3];
+extern RoundVar roundVar[9];
 
 void collision(Bomb &bomb) {
 
@@ -37,7 +39,7 @@ void collision(Bomb &bomb) {
 
                 }
                 
-                scoreInt++;
+                scoreInt = scoreInt + roundVar[currentRound].bombValue;
             }
             
             

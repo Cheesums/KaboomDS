@@ -35,7 +35,6 @@ extern RoundVar roundVar[9];
 
 int roundBombCurrent = 0;
 
-int buttonPressed = 0;
 int Pressed;
 int Held;
 int Released;
@@ -58,7 +57,6 @@ int main() {
 		Pressed = keysDown();
 		Held = keysHeld();
 		Released = keysUp();
-		buttonPressed = keysHeld();
 
 
 		//Determine the state of the game; pre-game, between rounds, or in a roundVar
@@ -74,6 +72,7 @@ int main() {
 					currentRound = 8;
 				}
 				roundBombCurrent = 0;
+				bomber.setVel(roundVar[currentRound].bomberVelX);
 				gameState = 1;
 			}
 			
@@ -97,7 +96,7 @@ int main() {
 			bomber.updatePos();
 
 			//drop a bomb every 20 frames and keep track of each bomb
-			if ((frameCount%20 == 0) && (roundBombCurrent < roundVar[currentRound].bombTarget))
+			if ((frameCount%roundVar[currentRound].bombFrequency == 0) && (roundBombCurrent < roundVar[currentRound].bombTarget))
 			{
 				
 				bomb[bombCount].spawn(bombCount);
@@ -124,7 +123,7 @@ int main() {
 			{
 				if (bomb[i].isSpawned()) //only manipulate after a bomb object has been filled (i.e. isSpawned is true)
 				{
-					bomb[i].bombScroll();
+					bomb[i].bombScroll(roundVar[currentRound].bombVelY);
 				
 					if (bomb[i].getScreen() == 1)
 					{

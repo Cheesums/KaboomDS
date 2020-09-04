@@ -30,14 +30,8 @@ char* scoreString;
 
 int gameState = 0;
 int currentRound = 0;
-struct RoundVar 
-{
-	int bomberVelX;
-	int bombValue;
-	int bombFrequency;
-	int bombVelY;
-	int bombTarget;
-} roundVar[9];
+
+extern RoundVar roundVar[9];
 
 int roundBombCurrent = 0;
 
@@ -54,22 +48,6 @@ int main() {
 
 	Bomb bomb[50];
 
-	for (int i = 1; i < 9; i++)
-	{
-		roundVar[i].bomberVelX = i + 1;
-		roundVar[i].bombValue = i + 1;
-		roundVar[i].bombFrequency = 21 - i;
-		roundVar[i].bombVelY = i + 1;
-		if (i<7)
-		{		
-			roundVar[i].bombTarget = i*10;
-		} else
-		{
-			roundVar[i].bombTarget = 75 + 25*(i-6);
-		}
-		
-	}
-	
 
 	setup(); //load and create background and sprites and set initial values
 

@@ -2,7 +2,7 @@
 #include <nf_lib.h>
 
 
-
+extern RoundVar roundVar[9];
 extern MadBomber bomber;
 extern Bucket bucket[3];
 
@@ -86,6 +86,27 @@ void setup() {
 
     //populate and spawn all buckets in the array
     spawnBuckets();
+
+	for (int i = 1; i < 9; i++)
+	{
+		roundVar[i].bomberVelX = i + 1;
+		roundVar[i].bombValue = i + 1;
+		roundVar[i].bombFrequency = 21 - i;
+		roundVar[i].bombVelY = i + 1;
+		if (i<6)
+		{		
+			roundVar[i].bombTarget = i*10;
+		} else if (i<8)
+		{
+			roundVar[i].bombTarget = 75 + 25*(i-6);
+		} else
+		{
+			roundVar[i].bombTarget = 150;
+		}
+		
+		
+	}
+	
 
     //create the bomber and set initial values
 	bomber.setID(0);

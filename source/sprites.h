@@ -71,4 +71,13 @@ class Bomb: public Sprite {
 	bool isFinal();
 };
 
+struct RoundVar 
+{
+	int bomberVelX;
+	int bombValue;
+	int bombFrequency;
+	int bombVelY;
+	int bombTarget;
+};
+
 #endif

@@ -183,3 +183,7 @@ void Bomb::clearFinal() {
 bool Bomb::isFinal() {
     return finalBomb_;
 }
+
+void Bomb::cycleColor(){
+    //Use NF_sprite pallet edit to get colors of bomb explosion
+}

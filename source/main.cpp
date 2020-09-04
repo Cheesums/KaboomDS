@@ -10,7 +10,9 @@
 
 
 volatile int paddleState = 0;
+
 volatile int frameCount = 0;
+int storedFrameCount = 0;
 
 volatile int scoreInt = 0;
 
@@ -25,6 +27,8 @@ int BOMB_HEIGHT = 16;
 volatile int paddleDis = 0;
 
 volatile int bombCount = 0;
+int storedBombID = 0;
+int bombExpFrameCount = 0;
 
 char* scoreString;
 
@@ -34,12 +38,14 @@ int currentRound = 0;
 extern RoundVar roundVar[9];
 
 int roundBombCurrent = 0;
+bool bombRollover = false;
 
 int Pressed;
 int Held;
 int Released;
 extern MadBomber bomber;
 extern Bucket bucket[3];
+
 
 Paddle paddle;
 
@@ -78,7 +84,7 @@ int main() {
 			
 			break;
 		case 1:
-
+		//playing in round
 
 			//get paddle displacement
 			paddleDis = paddle.getPaddleDis();
@@ -127,7 +133,7 @@ int main() {
 				
 					if (bomb[i].getScreen() == 1)
 					{
-						collision(bomb[i]);
+						collision(bomb[i]);				//overhaul mechanism for winning a round. Probably count how many bombs are captured and compare against round target
 					}
 
 					if (bomb[i].getY() > 198)
@@ -137,26 +143,118 @@ int main() {
 							bomb[i].jumpScreen();
 						}else
 						{
-							bomb[i].del();
-							bomb[i].clearFinal();
+							storedFrameCount = frameCount;
+							storedBombID = i;
+							bombRollover = (storedBombID > bombCount);
+							gameState = 3;
 						}
 					}
 				}
 			}
 			break;
 
+		case 2:
+		//case for waiting between rounds
+			break;
+		case 3:
+
+
+
+			switch (bombExpFrameCount)
+			{
+			case 0:
+				//Set the bottom bomb to the first explosions sprite
+				bomb[storedBombID].setFrame(0);
+				bomb[storedBombID].cycleColor();
+				bombExpFrameCount++;
+				break;
+			case 1:
+				//wait a frame
+				bomb[storedBombID].cycleColor();
+				bombExpFrameCount++;
+				break;
+			case 2:
+				//wait a frame
+				bomb[storedBombID].cycleColor();
+				bombExpFrameCount++;
+				break;
+			case 3:
+				//explosions sprite 2
+				bomb[storedBombID].setFrame(0);
+				bomb[storedBombID].cycleColor();
+				bombExpFrameCount++;
+				break;
+			case 4:
+				//wait
+				bomb[storedBombID].cycleColor();
+				bombExpFrameCount++;
+				break;
+			case 5:
+				//wait a frame
+				bomb[storedBombID].cycleColor();
+				bombExpFrameCount++;
+				break;
+			case 6:
+				//explosion sprite 3
+				bomb[storedBombID].setFrame(0);
+				bomb[storedBombID].cycleColor();
+				bombExpFrameCount++;
+				break;
+			case 7:
+				//wait
+				bomb[storedBombID].cycleColor();
+				bombExpFrameCount++;
+				break;
+			case 8:
+				//wait a frame
+				bomb[storedBombID].cycleColor();
+				bombExpFrameCount++;
+				break;
+			case 9:
+				bombExpFrameCount = 0;
+				bomb[storedBombID].del();
+				bomb[storedBombID].clearFinal();
+				storedBombID++;
+				if (storedBombID > 49)
+				{
+					storedBombID = 0;
+					bombRollover = false;
+				}
+				if ((storedBombID > bombCount) & !bombRollover)
+				{
+					bombExpFrameCount = 10;
+				}
+				break;
+			case 10:
+				if (KEY_A & Pressed)
+				{
+					currentRound = 0;
+					scoreInt = 0;
+					bombExpFrameCount = 0;
+					gameState = 0;
+				}
+				
+				break;				
+			default:
+				break;				
+			}
+
+						
+							
+			break;
 		default:
 			gameState = 0;
 			break;
 		}
 
-		sprintf(scoreString, "score %i, round %i, target %i,   current %i", scoreInt, currentRound, roundVar[currentRound].bombTarget, roundBombCurrent);
+		sprintf(scoreString, "score %i, stored %i, count %i, expframe %i", scoreInt, storedBombID, bombCount, bombExpFrameCount);
 		NF_WriteText16(0, 0, 0, 0, scoreString);
 		
 
 		frameCount ++;
 		//update both screens
 		NF_UpdateTextLayers();
+		NF_ClearTextLayer(0, 0);
 		NF_SpriteOamSet(0);
 		NF_SpriteOamSet(1);
 		swiWaitForVBlank();

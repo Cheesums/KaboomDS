@@ -69,6 +69,7 @@ class Bomb: public Sprite {
 	void setFinal();
 	void clearFinal();
 	bool isFinal();
+	void cycleColor();
 };
 
 

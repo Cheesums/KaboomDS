@@ -7,5 +7,13 @@ void displayBackgrounds();
 void spawnBuckets();
 void setup();
 
+struct RoundVar 
+{
+	int bomberVelX;
+	int bombValue;
+	int bombFrequency;
+	int bombVelY;
+	int bombTarget;
+};
 
 #endif

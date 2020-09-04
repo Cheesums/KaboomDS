@@ -183,5 +183,3 @@ void Bomb::clearFinal() {
 bool Bomb::isFinal() {
     return finalBomb_;
 }
-
-RoundVar roundVar[9];

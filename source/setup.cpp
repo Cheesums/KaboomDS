@@ -2,7 +2,7 @@
 #include <nf_lib.h>
 
 
-extern RoundVar roundVar[9];
+RoundVar roundVar[9];
 extern MadBomber bomber;
 extern Bucket bucket[3];
 

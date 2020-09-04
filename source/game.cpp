@@ -7,6 +7,7 @@ extern int BUCKET_WIDTH;
 extern int BUCKET_OFFSET;
 
 extern int remainingBuckets;
+extern int bombsCaught;
 
 extern int BOMB_WIDTH;
 extern int BOMB_HEIGHT;
@@ -34,10 +35,11 @@ void collision(Bomb &bomb) {
             if ((bombY+BOMB_HEIGHT >= bucketTop) && (bombY <= bucketTop+BUCKET_HEIGHT))
             {
                 bomb.del();
-                if (bomb.isFinal())
+                bombsCaught++;
+                if (bombsCaught >= roundVar[currentRound].bombTarget)
                 {
-                    bomb.clearFinal();
-                    gameState = 0;
+                    gameState = 2;
+                    currentRound++;
 
                 }
                 

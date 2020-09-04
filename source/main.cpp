@@ -27,6 +27,7 @@ int BOMB_HEIGHT = 16;
 volatile int paddleDis = 0;
 
 volatile int bombCount = 0;
+int bombsCaught = 0;
 int storedBombID = 0;
 int bombExpFrameCount = 0;
 
@@ -45,6 +46,10 @@ bool bombRollover = false;
 int Pressed;
 int Held;
 int Released;
+
+int START_ROUND_BUTTON = (KEY_START | KEY_A | KEY_L);
+int RESET_BUTTON = KEY_START;
+
 extern MadBomber bomber;
 extern Bucket bucket[3];
 
@@ -71,7 +76,7 @@ int main() {
 		switch (gameState)
 		{
 		case 0:
-			if (KEY_A & Pressed)
+			if ((START_ROUND_BUTTON) & Pressed)
 			{
 				paddle.setZero();
 				currentRound++;
@@ -81,6 +86,7 @@ int main() {
 				}
 				roundBombCurrent = 0;
 				bomber.setVel(roundVar[currentRound].bomberVelX);
+				bombsCaught = 0;
 				gameState = 1;
 			}
 			
@@ -99,8 +105,11 @@ int main() {
 			
 			//move the bomber around the screen
 			//make the bomber bounce off the edged of the screen and randomly change direction without bumbing the wall
-			bomber.move(bomber.getVel(), 0);
-			bomber.screenBounce();
+			if (roundBombCurrent < roundVar[currentRound].bombTarget)
+			{
+				bomber.move(bomber.getVel(), 0);
+				bomber.screenBounce();
+			}			
 			bomber.updatePos();
 
 			//drop a bomb every 20 frames and keep track of each bomb
@@ -109,11 +118,6 @@ int main() {
 				
 				bomb[bombCount].spawn(bombCount);
 				roundBombCurrent++;
-				if (roundBombCurrent >= roundVar[currentRound].bombTarget)
-				{
-					bomb[bombCount].setFinal();
-					
-				}
 				bombCount++;
 
 				if (bombCount == 50)
@@ -157,6 +161,23 @@ int main() {
 
 		case 2:
 		//case for waiting between rounds
+
+			paddleDis = paddle.getPaddleDis();
+			//move all buckets according to the paddle
+			for (int i = 0; i < 3; i++)
+			{
+				bucket[i].bucketScroll(paddleDis);
+			}
+
+			if (START_ROUND_BUTTON & Pressed)
+			{
+				roundBombCurrent = 0;
+				bombsCaught = 0;
+				gameState = 1;
+			}
+			
+			
+
 			break;
 		case 3:
 		//Perform round loss animation and prepare consequences of the loss (delete a buclet or end the game)
@@ -215,7 +236,7 @@ int main() {
 			case 9:
 				bombExpFrameCount = 0;
 				bomb[storedBombID].del();
-				bomb[storedBombID].clearFinal();
+				//bomb[storedBombID].clearFinal();
 				while (!bomb[storedBombID].isSpawned() && ((storedBombID < bombCount) || bombRollover))
 				{
 					storedBombID++;
@@ -230,17 +251,23 @@ int main() {
 				{
 					bombExpFrameCount = 10;
 					remainingBuckets = remainingBuckets - 1;
-					bucket[remainingBuckets].del();
+					bucket[remainingBuckets].hide();
 				}
 				break;
 			case 10:
-				if (((KEY_A | KEY_START | KEY_L) & Pressed) > 0)
+				bombExpFrameCount = 0;
+				if (remainingBuckets < 1)
 				{
-					currentRound = 0;
-					scoreInt = 0;
-					bombExpFrameCount = 0;
-					gameState = 0;
+					gameState = 4;
+				} else
+				{	
+					if (currentRound > 1)
+					{
+						currentRound = currentRound - 1;
+					}
+					gameState = 2;
 				}
+				
 				
 				break;				
 			default:
@@ -250,12 +277,27 @@ int main() {
 						
 							
 			break;
+		case 4:
+			//Game Over
+			if (RESET_BUTTON & Pressed)
+			{
+				currentRound = 0;
+				scoreInt = 0;
+				gameState = 0;
+				remainingBuckets = 3;
+				for (int i = 0; i < 3; i++)
+				{
+					bucket[i].show();
+				}
+				
+			}
+			break;
 		default:
 			gameState = 0;
 			break;
 		}
 
-		sprintf(scoreString, "score %i, stored %i, count %i, expframe %i, spawned %i, frame %i", scoreInt, storedBombID, bombCount, bombExpFrameCount, bomb[storedBombID].isSpawned(), frameCount);
+		sprintf(scoreString, "score %i, stored %i, count %i, gamestate %i, buckets %i", scoreInt, storedBombID, bombCount, gameState, remainingBuckets);
 		NF_WriteText16(0, 0, 0, 0, scoreString);
 		
 

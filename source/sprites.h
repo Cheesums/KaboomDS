@@ -34,6 +34,8 @@ class Sprite {
 	void setPos(int X, int Y);
 	void move(int X, int Y);
 	void del();
+	void hide();
+	void show();
 };
 
 class MadBomber: public Sprite {
@@ -65,7 +67,6 @@ class Bomb: public Sprite {
     void spawn(int bombCount);
     void bombScroll(int bombVelY);
     void jumpScreen();
-    void hide();
 	void setFinal();
 	void clearFinal();
 	bool isFinal();

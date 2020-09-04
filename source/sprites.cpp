@@ -92,6 +92,13 @@ void Sprite::del() {
     }
 }
 
+void Sprite::hide() {
+    NF_ShowSprite(screen_, ID_, false);
+}
+
+void Sprite::show() {
+    NF_ShowSprite(screen_, ID_, true);
+}
 
 
 void MadBomber::velRev() {
@@ -118,7 +125,7 @@ void MadBomber::screenBounce() {
     int r = rand()%200;
     if (X_ > 190 || X_ < 2 || r <2)
     {
-    this->velRev();
+        this->velRev();
     }
 }
 
@@ -165,11 +172,6 @@ void Bomb::jumpScreen() {
     screen_ = 1;
     Y_ = -16;
     NF_CreateSprite(screen_, ID_, 2, 2, X_, Y_);
-}
-
-void Bomb::hide() {
-    NF_ShowSprite(screen_, ID_, false);
-    X_ = 350;
 }
 
 void Bomb::setFinal() {

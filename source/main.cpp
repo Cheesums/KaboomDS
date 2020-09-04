@@ -35,6 +35,8 @@ char* scoreString;
 int gameState = 0;
 int currentRound = 0;
 
+int remainingBuckets = 3;
+
 extern RoundVar roundVar[9];
 
 int roundBombCurrent = 0;
@@ -157,9 +159,9 @@ int main() {
 		//case for waiting between rounds
 			break;
 		case 3:
+		//Perform round loss animation and prepare consequences of the loss (delete a buclet or end the game)
 
-
-
+			//Perform each case all in a row one case per frame
 			switch (bombExpFrameCount)
 			{
 			case 0:
@@ -214,19 +216,25 @@ int main() {
 				bombExpFrameCount = 0;
 				bomb[storedBombID].del();
 				bomb[storedBombID].clearFinal();
-				storedBombID++;
-				if (storedBombID > 49)
+				while (!bomb[storedBombID].isSpawned() && ((storedBombID < bombCount) || bombRollover))
 				{
-					storedBombID = 0;
-					bombRollover = false;
+					storedBombID++;
+						
+					if (storedBombID > 49)
+					{
+						storedBombID = 0;
+						bombRollover = false;
+					}
 				}
-				if ((storedBombID > bombCount) & !bombRollover)
+				if ((storedBombID >= bombCount) & !bombRollover)
 				{
 					bombExpFrameCount = 10;
+					remainingBuckets = remainingBuckets - 1;
+					bucket[remainingBuckets].del();
 				}
 				break;
 			case 10:
-				if (KEY_A & Pressed)
+				if (((KEY_A | KEY_START | KEY_L) & Pressed) > 0)
 				{
 					currentRound = 0;
 					scoreInt = 0;
@@ -247,7 +255,7 @@ int main() {
 			break;
 		}
 
-		sprintf(scoreString, "score %i, stored %i, count %i, expframe %i", scoreInt, storedBombID, bombCount, bombExpFrameCount);
+		sprintf(scoreString, "score %i, stored %i, count %i, expframe %i, spawned %i, frame %i", scoreInt, storedBombID, bombCount, bombExpFrameCount, bomb[storedBombID].isSpawned(), frameCount);
 		NF_WriteText16(0, 0, 0, 0, scoreString);
 		
 

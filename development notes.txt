@@ -1,0 +1,32 @@
+Game States
+
+Front "Menu"
+	Player can
+		Change difficulty 	//later
+		choose players		//later
+		start game (starts "between rounds" //now
+Playing
+	Player can 
+		move buckets to catch bombs
+		miss bombs		//later
+
+Between Rounds
+	Player Can
+		move bucket
+		start next round
+
+TODO
+Seperate "Between Rounds" and "Main Menu"
+Add difficulty selection in main menu
+Add button options in between rounds
+Fix round ending mechanic
+Fix bomber movement
+Replace score text
+Add sound
+Add Art (Tweak sprite mechanisms to match new sprite sizes)
+Spice up explosions animations (specificially with color cycling) as well as screen color changes
+Actualy animate bombs, bomber, and buckets
+Balance difficulty (Potentially tweak sprites to be smaller to allow increased difficulty)
+Make source code look way nicer
+Add touch screen (maybe d-pad) support
+Add 2 player mode

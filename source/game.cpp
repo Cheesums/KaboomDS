@@ -6,6 +6,8 @@ extern int BUCKET_HEIGHT;
 extern int BUCKET_WIDTH;
 extern int BUCKET_OFFSET;
 
+extern int remainingBuckets;
+
 extern int BOMB_WIDTH;
 extern int BOMB_HEIGHT;
 
@@ -18,7 +20,7 @@ extern RoundVar roundVar[9];
 
 void collision(Bomb &bomb) {
 
-    int bucketBot = BUCKET_TOP + 3*BUCKET_OFFSET;
+    int bucketBot = BUCKET_TOP + (remainingBuckets*BUCKET_OFFSET);
 
     int bucketX = bucket[0].getX();
     int bombX = bomb.getX();

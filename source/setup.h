@@ -10,6 +10,7 @@ void setup();
 struct RoundVar 
 {
 	int bomberVelX;
+    int revFreq;
 	int bombValue;
 	int bombFrequency;
 	int bombVelY;

@@ -121,12 +121,22 @@ int MadBomber::getVel() {
     return velX_;
 }
 
-void MadBomber::screenBounce() {
-    int r = rand()%200;
-    if (X_ > 190 || X_ < 2 || r <2)
+void MadBomber::bounce(int revFreq) {
+    int r_ = rand()%400;
+    if (X_ > 190)
+    {
+        this->velLeft();
+
+    } else if (X_ < 2)
+    {
+        this->velRight();
+
+    } else if (r_ < revFreq)
     {
         this->velRev();
+
     }
+
 }
 
 

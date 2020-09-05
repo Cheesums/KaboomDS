@@ -48,7 +48,7 @@ class MadBomber: public Sprite {
     void velLeft();
     void setVel(int vel);
     int getVel();
-    void screenBounce();
+    void bounce(int revFreq);
 };
 
 class Bucket: public Sprite {

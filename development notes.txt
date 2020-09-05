@@ -14,18 +14,24 @@ Between Rounds
 	Player Can
 		move bucket
 		start next round
+Game Over
+	Player Can
+		see score and bomber
+		reset to main menu
 
 TODO
-Seperate "Between Rounds" and "Main Menu"
-Add difficulty selection in main menu
-Add button options in between rounds
-Fix round ending mechanic
+Seperate "Between Rounds" and "Main Menu" 	X
+Add difficulty selection in main menu		
+Add button options in between rounds		X
+Fix round ending mechanic			X
 Fix bomber movement
 Replace score text
 Add sound
 Add Art (Tweak sprite mechanisms to match new sprite sizes)
 Spice up explosions animations (specificially with color cycling) as well as screen color changes
 Actualy animate bombs, bomber, and buckets
+Fix occasional double catch bug
+Add extra buckets
 Balance difficulty (Potentially tweak sprites to be smaller to allow increased difficulty)
 Make source code look way nicer
 Add touch screen (maybe d-pad) support

@@ -108,7 +108,7 @@ int main() {
 			if (roundBombCurrent < roundVar[currentRound].bombTarget)
 			{
 				bomber.move(bomber.getVel(), 0);
-				bomber.screenBounce();
+				bomber.bounce(roundVar[currentRound].revFreq);
 			}			
 			bomber.updatePos();
 
@@ -297,7 +297,7 @@ int main() {
 			break;
 		}
 
-		sprintf(scoreString, "score %i, stored %i, count %i, gamestate %i, buckets %i", scoreInt, storedBombID, bombCount, gameState, remainingBuckets);
+		sprintf(scoreString, "score %i, stored %i, count %i, gamestate %i, buckets %i, caught %i", scoreInt, storedBombID, bombCount, gameState, remainingBuckets, bombsCaught);
 		NF_WriteText16(0, 0, 0, 0, scoreString);
 		
 

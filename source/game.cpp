@@ -12,6 +12,8 @@ extern int bombsCaught;
 extern int BOMB_WIDTH;
 extern int BOMB_HEIGHT;
 
+int newLifeTracker;
+
 extern int scoreInt;
 extern int gameState;
 extern int currentRound;
@@ -32,18 +34,31 @@ void collision(Bomb &bomb) {
     {
         for (int bucketTop = BUCKET_TOP; bucketTop < bucketBot; bucketTop = bucketTop + BUCKET_OFFSET)
         {
-            if ((bombY+BOMB_HEIGHT >= bucketTop) && (bombY <= bucketTop+BUCKET_HEIGHT))
+            if (((bombY+BOMB_HEIGHT >= bucketTop) && (bombY <= bucketTop+BUCKET_HEIGHT)) && bomb.isSpawned())
             {
                 bomb.del();
                 bombsCaught++;
+                scoreInt = scoreInt + roundVar[currentRound].bombValue;
+                newLifeTracker = newLifeTracker + roundVar[currentRound].bombValue;
+                if (newLifeTracker >= 1000)
+                {
+                    newLifeTracker = newLifeTracker - 1000;
+                    if (remainingBuckets < 3)
+                    {
+                        bucket[remainingBuckets].show();
+                        remainingBuckets++;
+                    }
+                    
+                }
+                
+
+
                 if (bombsCaught >= roundVar[currentRound].bombTarget)
                 {
                     gameState = 2;
                     currentRound++;
-
                 }
                 
-                scoreInt = scoreInt + roundVar[currentRound].bombValue;
             }
             
             

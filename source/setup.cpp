@@ -7,6 +7,9 @@ extern MadBomber bomber;
 extern Bucket bucket[3];
 
 extern int BUCKET_TOP;
+extern int BUCKET_OFFSET;
+
+extern int BOMBER_SPAWN_Y;
 
 void loadGraphics() {
 
@@ -28,17 +31,17 @@ void loadGraphics() {
 	NF_InitTextSys(0);
 
 //Load a background for each screen
-	NF_LoadTiledBg("bg/backgroundTop", "backgroundTop", 256, 256);
-	NF_LoadTiledBg("bg/backgroundBot", "backgroundBot", 256, 256);
+	NF_LoadTiledBg("bg/background_top", "backgroundTop", 256, 256);
+	NF_LoadTiledBg("bg/background_bottom", "backgroundBot", 256, 256);
 
 //Load bomber sprite
-	NF_LoadSpriteGfx("sprite/bomberSprite", 0, 64, 64);
-	NF_LoadSpritePal("sprite/bomberSprite", 0);
+	NF_LoadSpriteGfx("sprite/bomber", 0, 16, 32);
+	NF_LoadSpritePal("sprite/bomber", 0);
 	NF_VramSpriteGfx(0, 0, 0, false);
 	NF_VramSpritePal(0, 0, 0);
 
 //Load bucket sprite
-	NF_LoadSpriteGfx("sprite/bucket", 1, 64, 32);
+	NF_LoadSpriteGfx("sprite/bucket", 1, 32, 16);
 	NF_LoadSpritePal("sprite/bucket", 1);
 	NF_VramSpriteGfx(1, 1, 1, false);
 	NF_VramSpritePal(1, 1, 1);
@@ -70,7 +73,7 @@ void spawnBuckets() {
 	for (int i = 0; i < 3; i++)
 	{
 		bucket[i].setX(10);
-		bucket[i].setY(BUCKET_TOP + (32*i));
+		bucket[i].setY(BUCKET_TOP + (BUCKET_OFFSET*i));
 		bucket[i].setID(i+1);
 		bucket[i].setScreen(1);
 		bucket[i].setGfx(1);
@@ -83,7 +86,29 @@ void spawnBuckets() {
 void setup() {
     loadGraphics();
     displayBackgrounds();    
-
+	//initialize and load sound
+	soundEnable();
+	NF_InitRawSoundBuffers();
+	NF_LoadRawSound("snd/catch0", 0, 22050, 0);
+	NF_LoadRawSound("snd/catch1", 1, 22050, 0);
+	NF_LoadRawSound("snd/catch2", 2, 22050, 0);
+	NF_LoadRawSound("snd/catch3", 3, 22050, 0);
+	NF_LoadRawSound("snd/catch4", 4, 22050, 0);
+	NF_LoadRawSound("snd/catch5", 5, 22050, 0);
+	NF_LoadRawSound("snd/catch6", 6, 22050, 0);
+	NF_LoadRawSound("snd/catch7", 7, 22050, 0);
+	NF_LoadRawSound("snd/bomb_explode0", 8, 22050, 0);
+	NF_LoadRawSound("snd/bomb_explode1", 9, 22050, 0);
+	NF_LoadRawSound("snd/bomb_explode2", 10, 22050, 0);
+	NF_LoadRawSound("snd/bomb_explode3", 11, 22050, 0);
+	NF_LoadRawSound("snd/bomb_explode4", 12, 22050, 0);
+	NF_LoadRawSound("snd/screen_explode", 13, 22050, 0);
+	NF_LoadRawSound("snd/new_bucket", 14, 22050, 0);
+	//NF_LoadRawSound("snd/bomb_fuse", 15, 22050, 0);
+	NF_LoadRawSound("snd/testFiles/fuse0", 15, 33075, 0);
+	NF_LoadRawSound("snd/testFiles/fuse1", 16, 33075, 0);
+	NF_LoadRawSound("snd/testFiles/fuse2", 17, 33075, 0);
+	NF_LoadRawSound("snd/testFiles/fuse3", 18, 33075, 0);
     //populate and spawn all buckets in the array
     spawnBuckets();
 
@@ -111,7 +136,7 @@ void setup() {
 
     //create the bomber and set initial values
 	bomber.setID(0);
-	bomber.setPos(100, 52);
+	bomber.setPos(100, BOMBER_SPAWN_Y);
 	bomber.setScreen(0);
 	bomber.setGfx(0);
 	bomber.setPal(0);

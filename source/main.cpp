@@ -7,7 +7,8 @@
 #include "input.h"
 #include "game.h"
 
-
+int SCREEN_SIZE_Y = 192;
+int SCREEN_SIZE_X = 256;
 
 volatile int paddleState = 0;
 
@@ -16,13 +17,21 @@ int storedFrameCount = 0;
 
 volatile int scoreInt = 0;
 
-int BUCKET_TOP = 96;
-int BUCKET_HEIGHT = 16;
-int BUCKET_WIDTH  = 64;
-int BUCKET_OFFSET = 32;
+int BOMBER_WIDTH = 14;
+int BOMBER_SPRITE_X_OFFSET = 1;
+int BOMBER_SPAWN_Y = 68;
 
-int BOMB_WIDTH = 16;
-int BOMB_HEIGHT = 16;
+int BUCKET_TOP = 138;
+int BUCKET_HEIGHT = 7;
+int BUCKET_WIDTH  = 28;
+int BUCKET_OFFSET = 18;
+int BUCKET_SPRITE_Y_OFFSET = 9;
+int BUCKET_SPRITE_X_OFFSET = 0;
+
+int BOMB_WIDTH = 10;
+int BOMB_HEIGHT = 8;
+int BOMB_SPRITE_Y_OFFSET = 8;
+int BOMB_SPRITE_X_OFFSET = 3;
 
 volatile int paddleDis = 0;
 
@@ -30,6 +39,9 @@ volatile int bombCount = 0;
 int bombsCaught = 0;
 int storedBombID = 0;
 int bombExpFrameCount = 0;
+
+bool bombsExist = false;
+bool fusePlaying = false;
 
 char* scoreString;
 
@@ -47,6 +59,9 @@ int Pressed;
 int Held;
 int Released;
 
+int fuseRando;
+int fuseSound;
+
 int START_ROUND_BUTTON = (KEY_START | KEY_A | KEY_L);
 int RESET_BUTTON = KEY_START;
 
@@ -63,6 +78,9 @@ int main() {
 
 	setup(); //load and create background and sprites and set initial values
 
+	//Setup noise to use for fuses
+	fuseSound = soundPlayNoise(22050, 0, 64);
+	//Move somewhere nicer once you know what you're doing
 
 //perform everything in loop once each frame
 	while(1) {
@@ -87,6 +105,8 @@ int main() {
 				roundBombCurrent = 0;
 				bomber.setVel(roundVar[currentRound].bomberVelX);
 				bombsCaught = 0;
+				frameCount = 0;
+				bombsExist = false;
 				gameState = 1;
 			}
 			
@@ -113,7 +133,7 @@ int main() {
 			bomber.updatePos();
 
 			//drop a bomb every 20 frames and keep track of each bomb
-			if ((frameCount%roundVar[currentRound].bombFrequency == 0) && (roundBombCurrent < roundVar[currentRound].bombTarget))
+			if ((frameCount%roundVar[currentRound].bombFrequency == 1) && (roundBombCurrent < roundVar[currentRound].bombTarget))
 			{
 				
 				bomb[bombCount].spawn(bombCount);
@@ -130,13 +150,16 @@ int main() {
 			//Only move bombs if they are within the expected bomb ID range
 			//Hide bombs and move them offscreen when they fall off of the bottom screen.
 
+			//check that at least one bomb is on screen
+			bombsExist = false;
 			
 			for (int i = 0; i < 50; i++)
 			{
 				if (bomb[i].isSpawned()) //only manipulate after a bomb object has been filled (i.e. isSpawned is true)
 				{
 					bomb[i].bombScroll(roundVar[currentRound].bombVelY);
-				
+					bombsExist = true;
+
 					if (bomb[i].getScreen() == 1)
 					{
 						collision(bomb[i]);				//overhaul mechanism for winning a round. Probably count how many bombs are captured and compare against round target
@@ -151,12 +174,62 @@ int main() {
 						{
 							storedFrameCount = frameCount;
 							storedBombID = i;
-							bombRollover = (storedBombID > bombCount);
+							bombRollover = (storedBombID > bombCount);							
+							soundSetVolume(fuseSound, 0);
 							gameState = 3;
 						}
 					}
 				}
 			}
+			//Play random fuse noise
+			//This sucks rn but its kinda close. I think its too fuzzy? no idea how to fix
+			if (bombsExist)
+			{
+				fuseRando = rand()%4;
+				if (fusePlaying)
+				{
+					fusePlaying = false;
+				}else
+				{			
+			
+					fusePlaying = true;
+					switch (fuseRando)
+					{
+					case 0:
+						//F:3, V:3
+						soundSetFreq(fuseSound, 19845);
+						soundSetVolume(fuseSound, 3);
+						break;
+					
+					case 1:
+						//F:1, V:2
+						soundSetFreq(fuseSound, 15435);
+						soundSetVolume(fuseSound, 2);
+						break;
+
+					case 2:
+						//F:2, V:2
+						soundSetFreq(fuseSound, 17640);
+						soundSetVolume(fuseSound, 2);
+						break;
+
+					case 3:
+						//F:0, V:1
+						soundSetFreq(fuseSound, 13230);
+						soundSetVolume(fuseSound, 1);
+						break;
+
+					default:
+						break;
+					}
+				}
+			} else
+			{
+				soundSetVolume(fuseSound, 0);
+			}
+			
+			
+
 			break;
 
 		case 2:
@@ -173,6 +246,7 @@ int main() {
 			{
 				roundBombCurrent = 0;
 				bombsCaught = 0;
+				frameCount = 0;
 				gameState = 1;
 			}
 			
@@ -297,7 +371,7 @@ int main() {
 			break;
 		}
 
-		sprintf(scoreString, "score %i, stored %i, count %i, gamestate %i, buckets %i, caught %i", scoreInt, storedBombID, bombCount, gameState, remainingBuckets, bombsCaught);
+		sprintf(scoreString, "score %i", scoreInt);
 		NF_WriteText16(0, 0, 0, 0, scoreString);
 		
 

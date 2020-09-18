@@ -1,6 +1,16 @@
 #include "sprites.h"
 #include <nf_lib.h>
 
+extern int SCREEN_SIZE_X;
+extern int SCREEN_SIZE_Y;
+
+extern int BOMBER_WIDTH;
+extern int BOMBER_SPRITE_X_OFFSET;
+extern int BOMBER_SPAWN_Y;
+
+extern int BUCKET_WIDTH;
+extern int BUCKET_SPRITE_X_OFFSET;
+
 void Sprite::setScreen(int screen) {
 	screen_ = screen;
 }
@@ -123,11 +133,11 @@ int MadBomber::getVel() {
 
 void MadBomber::bounce(int revFreq) {
     int r_ = rand()%400;
-    if (X_ > 190)
+    if (X_ > (SCREEN_SIZE_X - (BOMBER_WIDTH + BOMBER_SPRITE_X_OFFSET) - 2))
     {
         this->velLeft();
 
-    } else if (X_ < 2)
+    } else if (X_ < 2 - BOMBER_SPRITE_X_OFFSET)
     {
         this->velRight();
 
@@ -141,12 +151,12 @@ void MadBomber::bounce(int revFreq) {
 
 
 void Bucket::screenBind() {
-    if (X_ < 0)
+    if (X_ < BUCKET_SPRITE_X_OFFSET)
     {
-        X_ = 0;
-    } else if (X_ > 192)
+        X_ = BUCKET_SPRITE_X_OFFSET;
+    } else if (X_ > SCREEN_SIZE_X - BUCKET_WIDTH - BUCKET_SPRITE_X_OFFSET)
     {
-        X_ = 192;
+        X_ = SCREEN_SIZE_X - BUCKET_WIDTH - BUCKET_SPRITE_X_OFFSET;
     }
 }
 
@@ -168,8 +178,8 @@ Bucket bucket[3];
 void Bomb::spawn(int bombCount) {
     screen_ = 0;
     ID_ = bombCount + 4;
-    X_ = bomber.getX()+22;
-    Y_ = 100;
+    X_ = bomber.getX();
+    Y_ = BOMBER_SPAWN_Y+18;
     NF_CreateSprite(0, ID_, 2, 2, X_, Y_);
     spawned = true;
 }

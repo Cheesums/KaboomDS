@@ -24,15 +24,306 @@ Seperate "Between Rounds" and "Main Menu" 	X
 Add difficulty selection in main menu		
 Add button options in between rounds		X
 Fix round ending mechanic			X
-Fix bomber movement
 Replace score text
-Add sound
-Add Art (Tweak sprite mechanisms to match new sprite sizes)
-Spice up explosions animations (specificially with color cycling) as well as screen color changes
-Actualy animate bombs, bomber, and buckets
-Fix occasional double catch bug
-Add extra buckets
-Balance difficulty (Potentially tweak sprites to be smaller to allow increased difficulty)
+Add sound							IN-PROGRESS
+Add Art (Tweak sprite mechanisms to match new sprite sizes)  	X (revisit if game still feels bad)
+Actualy animate bombs, bomber, and buckets (and bg)
+	bombs
+		random fuse flicker animation
+		explosions should start a little high and to the right
+		4 4 3 (frames per explosion frame) cycling random colors each frame
+		
+Fix occasional double catch bug			X
+Add extra buckets				X
+Balance difficulty (Potentially tweak sprites to be smaller to allow increased difficulty Fix bomber movement)
 Make source code look way nicer
 Add touch screen (maybe d-pad) support
 Add 2 player mode
+
+waits one frame when dropping a bomb
+2	1
+2	1
+2	0
+2	0
+2	1
+2	0
+2	1
+
+
+Sounds		(sound toy is v,c,f)
+BombFalling
+F	C	V
+3	8	3
+0	8	1
+0	8	1
+3	8	3
+2	8	2
+3	8	3
+1	8	2
+2	8	2
+1	8	2
+0	8	1
+1	8	2
+1	8	2
+3	8	3
+0	8	1
+0	8	1
+2	8	2
+2	8	2
+3	8	3
+1	8	2
+0	8	1
+3	8	3
+1	8	2
+1	8	2
+3	8	3
+2	8	2
+2	8	2
+1	8	2
+1	8	2
+
+BucketCatch (R1)
+F	C	V
+f	c	c
+e	c	c
+e	8	8
+d	8	8
+c	8	8
+b	8	8
+a	8	8
+9	8	8
+8	8	8
+7	8	8
+6	8	8
+5	8	8
+4	8	8
+3	8	8
+2	8	8
+1	8	8
+
+Explosion
+F	C	V
+8	8	f
+8	8	e
+8	8	d
+8	8	d
+8	8	c
+8	8	a
+8	8	9
+8	8	8
+8	8	7
+8	8	0
+
+8	8	e
+8	8	e
+8	8	c
+8	8	b
+8	8	a
+8	8	a
+8	8	9
+8	8	8
+8	8	7
+8	8	5
+
+8	8	d
+8	8	d
+8	8	b
+8	8	a
+8	8	9
+8	8	9
+8	8	7
+8	8	7
+8	8	6
+8	8	4
+
+8	8	c
+8	8	b
+8	8	a
+8	8	8
+8	8	8
+8	8	6
+8	8	6
+8	8	4
+8	8	3
+8	8	3
+
+8	8	b
+8	8	a
+8	8	a
+8	8	8
+8	8	8
+8	8	6
+8	8	6
+8	8	4
+8	8	4
+8	8	3
+
+screen explosions
+F	C	V
+8	8	0
+1f	8	f
+1f	8	e
+1f	8	e
+1f	8	e
+1f	8	d
+1f	8	c
+1f	8	c
+1f	8	c
+1f	8	b
+1f	8	a
+1f	8	a
+1f	8	9
+1f	8	9
+1f	8	8
+1f	8	8
+1f	8	7
+1f	8	7
+1f	8	6
+1f	8	6
+1f	8	5
+1f	8	4
+1f	8	4
+1f	8	3
+1f	8	3
+1f	8	2
+1f	8	2
+1f	8	1
+1f	8	1
+1f	8	0
+
+catch round 2
+f	c	c
+e	c	c
+e	8	8
+d	8	8
+c	8	8
+b	8	8
+a	8	8
+9	8	8
+8	8	8	
+7	8	8	
+6	8	8
+5	8	8
+4	8	8
+3	8	8
+2	8	8
+1	8	8
+
+catch 3
+e	c	c
+d	c	c
+e	8	8
+d	8	8
+c	8	8
+b	8	8
+a	8	8
+9	8	8
+8	8	8	
+7	8	8	
+6	8	8
+5	8	8
+4	8	8
+3	8	8
+2	8	8
+1	8	8
+
+catch 4
+d	c	c
+c	c	c
+e	8	8
+d	8	8
+c	8	8
+b	8	8
+a	8	8
+9	8	8
+8	8	8	
+7	8	8	
+6	8	8
+5	8	8
+4	8	8
+3	8	8
+2	8	8
+1	8	8
+
+catch 5
+c	c	c
+b	c	c
+
+catch 6
+b	c	c
+a	c	c
+
+catch 7
+a	c	c
+9	c	c
+
+catch 8
+9	c	c
+8	c	c
+
+new bucket (Round 7? 3 bucket)		2 bucket same			1bucket same
+f	c	c			f	c	c		f	c	c
+f	c	c			f	c	c		f	c	c
+1d	c	c			1d	c	c		1d
+1c	c	c			1c	c	c		1c
+e	c	c			e	c	c		
+e	c	c			e	c	c
+1 9	c	c			19	c	c
+1 8	c	c			18	c	c
+d	c	c			d	c	c
+d	c	c			d	c	c
+1 5	c	c			15	c	c
+1 4	c	c			14	c	c
+c	c	c			c	c	c
+c	c	c			c	c	c
+11	c	c			
+10	c	c			
+b	c	c			
+b	c	c			
+d	c	c			
+c	c	c			
+a	c	c			
+a	c	c
+9	c	c
+8	c	c
+9	c	c
+9	c	c
+5	c	c
+4	c	c
+8	c	c
+8	c	c
+1	c	c
+0	c	c
+7	c	c
+7	c	c
+1d	c	c
+1c	c	c
+6	c	c
+6	c	c
+1 9	c	c
+1 8	c	c
+5	c	c
+5	c	c
+15	c	c
+14	c	c
+4	c	c
+4	c	c
+11	c	c
+10	c	c
+3	c	c
+3	c	c
+d	c	c
+c	c	c
+2	c	c
+2	c	c
+9	c	c
+8	c	c
+1	c	c
+1	c	c
+5	c	c
+4	c	c
+0	c	c
+0	c	c
+1	c	c
+
+2000`

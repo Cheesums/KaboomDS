@@ -11,6 +11,10 @@ extern int bombsCaught;
 
 extern int BOMB_WIDTH;
 extern int BOMB_HEIGHT;
+extern int BOMB_SPRITE_Y_OFFSET;
+extern int BOMB_SPRITE_X_OFFSET;
+extern int BUCKET_SPRITE_Y_OFFSET;
+extern int BUCKET_SPRITE_X_OFFSET;
 
 int newLifeTracker;
 
@@ -18,21 +22,24 @@ extern int scoreInt;
 extern int gameState;
 extern int currentRound;
 
+extern int fuseSound;
+
 extern Bucket bucket[3];
 extern RoundVar roundVar[9];
 
 void collision(Bomb &bomb) {
 
-    int bucketBot = BUCKET_TOP + (remainingBuckets*BUCKET_OFFSET);
+    int bucketTop = BUCKET_TOP + BUCKET_SPRITE_Y_OFFSET;
+    int bucketBot = bucketTop + (remainingBuckets*BUCKET_OFFSET);
 
-    int bucketX = bucket[0].getX();
-    int bombX = bomb.getX();
-    int bombY = bomb.getY();
+    int bucketX = bucket[0].getX() + BUCKET_SPRITE_X_OFFSET;
+    int bombX = bomb.getX() + BOMB_SPRITE_X_OFFSET;
+    int bombY = bomb.getY() + BOMB_SPRITE_Y_OFFSET;
 
     //check if bomb is withing X range of the buckets
     if ((bombX+BOMB_WIDTH >= bucketX) && (bombX <= bucketX+BUCKET_WIDTH))
     {
-        for (int bucketTop = BUCKET_TOP; bucketTop < bucketBot; bucketTop = bucketTop + BUCKET_OFFSET)
+        for (bucketTop = BUCKET_TOP + BUCKET_SPRITE_Y_OFFSET; bucketTop < bucketBot; bucketTop = bucketTop + BUCKET_OFFSET)
         {
             if (((bombY+BOMB_HEIGHT >= bucketTop) && (bombY <= bucketTop+BUCKET_HEIGHT)) && bomb.isSpawned())
             {
@@ -46,6 +53,7 @@ void collision(Bomb &bomb) {
                     if (remainingBuckets < 3)
                     {
                         bucket[remainingBuckets].show();
+                        NF_PlayRawSound(14, 127, 64, false, 0);
                         remainingBuckets++;
                     }
                     
@@ -55,8 +63,14 @@ void collision(Bomb &bomb) {
 
                 if (bombsCaught >= roundVar[currentRound].bombTarget)
                 {
+                    soundSetVolume(fuseSound, 0);
                     gameState = 2;
                     currentRound++;
+                    if (currentRound > 8)
+                    {
+                        currentRound = 8;
+                    }
+                    
                 }
                 
             }

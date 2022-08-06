@@ -327,7 +327,9 @@ int main() {
 				}
 				if ((storedBombID >= bombCount) & !bombRollover)
 				{
+					//To be added - delay to seperate screen explosion further from bomb explosions
 					explosionSound = 0;
+					NF_PlayRawSound(13, 127, 64, false, 0);
 					bombExpFrameCount = 10;
 					remainingBuckets = remainingBuckets - 1;
 					bucket[remainingBuckets].hide();

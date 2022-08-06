@@ -43,6 +43,8 @@ int bombExpFrameCount = 0;
 bool bombsExist = false;
 bool fusePlaying = false;
 
+int explosionSound;
+
 char* scoreString;
 
 int gameState = 0;
@@ -254,13 +256,14 @@ int main() {
 
 			break;
 		case 3:
-		//Perform round loss animation and prepare consequences of the loss (delete a buclet or end the game)
+		//Perform round loss animation and prepare consequences of the loss (delete a bucket or end the game)
 
 			//Perform each case all in a row one case per frame
 			switch (bombExpFrameCount)
 			{
 			case 0:
 				//Set the bottom bomb to the first explosions sprite
+				NF_PlayRawSound(((explosionSound%5)+8), 127, 64, false, 0);
 				bomb[storedBombID].setFrame(0);
 				bomb[storedBombID].cycleColor();
 				bombExpFrameCount++;
@@ -310,6 +313,7 @@ int main() {
 			case 9:
 				bombExpFrameCount = 0;
 				bomb[storedBombID].del();
+				explosionSound++;
 				//bomb[storedBombID].clearFinal();
 				while (!bomb[storedBombID].isSpawned() && ((storedBombID < bombCount) || bombRollover))
 				{
@@ -323,6 +327,7 @@ int main() {
 				}
 				if ((storedBombID >= bombCount) & !bombRollover)
 				{
+					explosionSound = 0;
 					bombExpFrameCount = 10;
 					remainingBuckets = remainingBuckets - 1;
 					bucket[remainingBuckets].hide();

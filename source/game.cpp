@@ -42,7 +42,7 @@ void collision(Bomb &bomb) {
     {
         for (bucketTop = BUCKET_TOP + BUCKET_SPRITE_Y_OFFSET; bucketTop < bucketBot; bucketTop = bucketTop + BUCKET_OFFSET)
         {
-            if (((bombY+BOMB_HEIGHT >= bucketTop) && (bombY <= bucketTop+BUCKET_HEIGHT)) && bomb.isSpawned())
+            if (((bombY+BOMB_HEIGHT >= bucketTop) && (bombY <= bucketTop+BUCKET_HEIGHT)) && bomb.isSpawned())   //Bomb is caught
             {
                 bomb.del();
                 soundKill(catchSoundChannel);
@@ -65,7 +65,7 @@ void collision(Bomb &bomb) {
                 
 
 
-                if (bombsCaught >= roundVar[currentRound].bombTarget)
+                if (bombsCaught >= roundVar[currentRound].bombTarget)   //Last bomb for the round is caught
                 {
                     soundSetVolume(fuseSound, 0);
                     gameState = 2;

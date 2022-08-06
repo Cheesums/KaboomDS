@@ -264,7 +264,7 @@ int main() {
 			case 0:
 				//Set the bottom bomb to the first explosions sprite
 				NF_PlayRawSound(((explosionSound%5)+8), 127, 64, false, 0);
-				bomb[storedBombID].setFrame(0);
+				bomb[storedBombID].setFrame(4);
 				bomb[storedBombID].cycleColor();
 				bombExpFrameCount++;
 				break;
@@ -279,13 +279,12 @@ int main() {
 				bombExpFrameCount++;
 				break;
 			case 3:
-				//explosions sprite 2
-				bomb[storedBombID].setFrame(0);
 				bomb[storedBombID].cycleColor();
 				bombExpFrameCount++;
 				break;
 			case 4:
-				//wait
+				//wait				//explosions sprite 2
+				bomb[storedBombID].setFrame(5);
 				bomb[storedBombID].cycleColor();
 				bombExpFrameCount++;
 				break;
@@ -295,13 +294,13 @@ int main() {
 				bombExpFrameCount++;
 				break;
 			case 6:
-				//explosion sprite 3
-				bomb[storedBombID].setFrame(0);
 				bomb[storedBombID].cycleColor();
 				bombExpFrameCount++;
 				break;
 			case 7:
 				//wait
+				//explosion sprite 3
+				bomb[storedBombID].setFrame(6);
 				bomb[storedBombID].cycleColor();
 				bombExpFrameCount++;
 				break;

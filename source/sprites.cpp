@@ -207,5 +207,5 @@ bool Bomb::isFinal() {
 }
 
 void Bomb::cycleColor(){
-    //Use NF_sprite pallet edit to get colors of bomb explosion
+    NF_SpriteSetPalColor(screen_, 2, 7, rand()%31, rand()%31, rand()%31);
 }

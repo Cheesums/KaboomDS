@@ -1,0 +1,7 @@
+make.exe --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/opt/devkitpro/Projects/Kaboom!DS'
+ 
+[ -d build ] || mkdir -p build
+make --no-print-directory -C build -f /opt/devkitpro/Projects/Kaboom!DS/Makefile
+make: Leaving directory '/opt/devkitpro/Projects/Kaboom!DS'
+ 

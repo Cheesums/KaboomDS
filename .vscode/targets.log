@@ -1,0 +1,552 @@
+make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --question
+make: *** No rule to make target 'all'.  Stop.
+
+# GNU Make 4.3
+# Built for x86_64-pc-msys
+# Copyright (C) 1988-2020 Free Software Foundation, Inc.
+# License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+# This is free software: you are free to change and redistribute it.
+# There is NO WARRANTY, to the extent permitted by law.
+ 
+
+# Make data base, printed on Fri Aug  5 20:10:46 2022
+
+# Variables
+
+# environment
+FPS_BROWSER_APP_PROFILE_STRING = Internet Explorer
+# environment
+SYSTEMDRIVE = C:
+# makefile (from '/opt/devkitpro/devkitARM/base_rules', line 6)
+PORTLIBS_PATH := /opt/devkitpro/portlibs
+# makefile (from '/opt/devkitpro/devkitARM/base_tools', line 23)
+AS := arm-none-eabi-as
+# makefile (from 'Makefile', line 110)
+OUTPUT := /opt/devkitpro/Projects/Kaboom!DS/Kaboom!DS
+# environment
+LC_ALL = C
+# environment
+WINDOWS_TRACING_FLAGS = 3
+# makefile (from '/opt/devkitpro/devkitARM/base_tools', line 24)
+AR := arm-none-eabi-gcc-ar
+# makefile (from 'Makefile', line 26)
+GAME_SUBTITLE1 := Text 2
+# environment
+USERPROFILE = C:\Users\Kyle
+# environment
+VBOX_MSI_INSTALL_PATH = A:\MyStuff\Installations\Oracle\Virtual Box\
+# makefile (from 'Makefile', line 138)
+OFILES :=  game.o input.o main.o setup.o sprites.o  
+# environment
+LOCALAPPDATA = C:\Users\Kyle\AppData\Local
+# makefile (from 'Makefile', line 119)
+CFILES := 
+# makefile (from 'Makefile', line 112)
+VPATH := /opt/devkitpro/Projects/Kaboom!DS/source /opt/devkitpro/Projects/Kaboom!DS/data
+# environment
+VSCODE_CWD = C:\devkitPro\Projects\Kaboom!DS
+# environment
+CHOCOLATEYINSTALL = C:\ProgramData\chocolatey
+# environment
+SYSTEMROOT = C:\WINDOWS
+# makefile (from 'Makefile', line 93)
+LIBS := -lnflib -lfilesystem -lfat -lnds9
+# environment
+PROCESSOR_LEVEL = 6
+# environment
+PSMODULEPATH = C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules\
+# default
+MAKE_COMMAND := make
+# makefile (from 'Makefile', line 117)
+NITRO_FILES := /opt/devkitpro/Projects/Kaboom!DS/nitrofiles
+# environment
+GPU_FORCE_64BIT_PTR = 0
+# automatic
+@D = $(patsubst %/,%,$(dir $@))
+# makefile (from 'Makefile', line 120)
+CPPFILES := game.cpp input.cpp main.cpp setup.cpp sprites.cpp
+# environment
+FPS_BROWSER_USER_PROFILE_STRING = Default
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# default
+.VARIABLES := 
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# environment
+GPU_MAX_HEAP_SIZE = 100
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+# automatic
+%F = $(notdir $%)
+# environment
+VSCODE_CODE_CACHE_PATH = C:\Users\Kyle\AppData\Roaming\Code\CachedData\da76f93349a72022ca4670c1b84860304616aaa2
+# makefile (from 'Makefile', line 23)
+LIBNDS := /opt/devkitpro/libnds
+# environment
+LANG = C
+# default
+.LOADED := 
+# environment
+TMP = /home/Kyle/AppData/Local/Temp
+# default
+.INCLUDE_DIRS = /usr/include /usr/include
+# makefile
+MAKEFLAGS = pqrR
+# makefile (from 'Makefile', line 121)
+SFILES := 
+# environment
+ONEDRIVE = C:\Users\Kyle\OneDrive
+# environment
+DEVKITARM = /opt/devkitpro/devkitARM
+# makefile
+CURDIR := /opt/devkitpro/Projects/Kaboom!DS
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# makefile (from 'Makefile', line 115)
+DEPSDIR := /opt/devkitpro/Projects/Kaboom!DS/build
+# environment
+PROGRAMFILES = C:\Program Files
+# environment
+MFLAGS = -pqrR
+# default
+.SHELLFLAGS := -c
+# environment
+!C: = c:\devkitPro\Projects\Kaboom!DS
+# environment
+COMMONPROGRAMW6432 = C:\Program Files\Common Files
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# makefile (from '/opt/devkitpro/devkitARM/base_tools', line 1)
+MAKEFILE_LIST := Makefile /opt/devkitpro/devkitARM/base_rules /opt/devkitpro/devkitARM/base_tools
+# makefile (from 'Makefile', line 87)
+ASFLAGS := -g -mthumb -mthumb-interwork
+# automatic
+@F = $(notdir $@)
+# environment
+VSCODE_PID = 2508
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# makefile (from '/opt/devkitpro/devkitARM/base_tools', line 28)
+RANLIB := arm-none-eabi-gcc-ranlib
+# environment
+DEVKITPPC = /opt/devkitpro/devkitPPC
+# makefile (from 'Makefile', line 70)
+INCLUDES := include
+# makefile (from 'Makefile', line 147)
+icons := icon.bmp
+# automatic
+*F = $(notdir $*)
+# environment
+GPU_SINGLE_ALLOC_PERCENT = 100
+# makefile (from 'Makefile', line 72)
+NITRODATA := nitrofiles
+# automatic
+<D = $(patsubst %/,%,$(dir $<))
+# makefile (from 'Makefile', line 153)
+GAME_ICON := /opt/devkitpro/Projects/Kaboom!DS/icon.bmp
+# environment
+VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
+# makefile (from 'Makefile', line 141)
+INCLUDE := -iquote /opt/devkitpro/Projects/Kaboom!DS/include -I/opt/devkitpro/libnds/include -I/opt/devkitpro/Projects/Kaboom!DS/nflib/include -I/opt/devkitpro/Projects/Kaboom!DS/build
+# environment
+ONEDRIVECONSUMER = C:\Users\Kyle\OneDrive
+# default
+ 
+MAKE_HOST := x86_64-pc-msys
+# environment
+GPU_USE_SYNC_OBJECTS = 1
+# environment
+PROGRAMDATA = C:\ProgramData
+# default
+SHELL := /bin/sh
+# environment
+HOMEPATH = \Users\Kyle
+# default
+MAKECMDGOALS := all
+# environment
+DRIVERDATA = C:\Windows\System32\Drivers\DriverData
+# environment
+COMSPEC = C:\WINDOWS\system32\cmd.exe
+# environment
+WINDIR = C:\WINDOWS
+# makefile (from 'Makefile', line 122)
+BINFILES := 
+# environment
+GPU_MAX_ALLOC_PERCENT = 100
+# environment
+MAKELEVEL := 0
+# makefile (from 'Makefile', line 145)
+LIBPATHS := -L/opt/devkitpro/libnds/lib -L/opt/devkitpro/Projects/Kaboom!DS/nflib/lib
+# default
+MAKE = $(MAKE_COMMAND)
+# makefile (from '/opt/devkitpro/devkitARM/base_tools', line 14)
+PATH := /opt/devkitpro/tools/bin:/opt/devkitpro/devkitARM/bin:/c/Python39/Scripts:/c/Python39:/opt/devkitpro/msys2/usr/bin:/c/ProgramData/Oracle/Java/javapath:/c/Program Files (x86)/Intel/iCLS Client:/c/Program Files/Intel/iCLS Client:/c/Windows/system32:/c/Windows:/c/Windows/System32/Wbem:/c/Windows/System32/WindowsPowerShell/v1.0:/c/Program Files/Intel/Intel(R) Management Engine Components/DAL:/c/Program Files/Intel/Intel(R) Management Engine Components/IPT:/c/Program Files (x86)/Intel/Intel(R) Management Engine Components/DAL:/c/Program Files (x86)/Intel/Intel(R) Management Engine Components/IPT:/c/Program Files (x86)/IVI Foundation/VISA/WinNT/Bin:/c/Program Files/IVI Foundation/VISA/Win64/Bin:/c/Program Files (x86)/IVI Foundation/VISA/WinNT/Bin:/c/Program Files (x86)/QuickTime/QTSystem:/c/WINDOWS/system32:/c/WINDOWS:/c/WINDOWS/System32/Wbem:/c/WINDOWS/System32/WindowsPowerShell/v1.0:/c/WINDOWS/System32/OpenSSH:/a/MyStuff/Installations/Git/cmd:/c/Program Files (x86)/FAHClient:/home/Kyle/AppData/Local/Microsoft/WindowsApps:/a/M:/a/MyStuff/Installations/Matlab/bin:/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR:/c/WINDOWS/system32:/c/WINDOWS:/c/WINDOWS/System32/Wbem:/c/WINDOWS/System32/WindowsPowerShell/v1.0:/c/WINDOWS/System32/OpenSSH:/c/Program Files/nodejs:/c/ProgramData/chocolatey/bin:/c/Program Files/dotnet:/home/Kyle/AppData/Local/Microsoft/WindowsApps:/a/MyStuff/Installations/Microsoft VS Code/bin:/a/MyStuff/Installations/Git/mingw64/bin:/home/Kyle/AppData/Roaming/npm
+# environment
+COMPUTERNAME = KYLE-PC
+# default
+MAKEFILES := 
+# automatic
+^F = $(notdir $^)
+# makefile (from '/opt/devkitpro/devkitARM/base_tools', line 5)
+UNAME_R := 3.0.7-338.x86_64
+# environment
+PROMPT = $P$G
+# makefile (from 'Makefile', line 30)
+_ADDFILES := -d 
+# environment
+CHOCOLATEYLASTPATHUPDATE = 132564434607819954
+# environment
+VXIPNPPATH64 = C:\Program Files\IVI Foundation\VISA\
+# makefile (from '/opt/devkitpro/devkitARM/base_tools', line 19)
+PREFIX := arm-none-eabi-
+# makefile (from 'Makefile', line 100)
+LIBDIRS := /opt/devkitpro/libnds /opt/devkitpro/Projects/Kaboom!DS/nflib
+# environment
+LOGONSERVER = \\KYLE-PC
+# environment
+USERNAME = Kyle
+# environment
+COMMONPROGRAMFILES = C:\Program Files\Common Files
+# automatic
+?F = $(notdir $?)
+# makefile (from '/opt/devkitpro/devkitARM/base_rules', line 105)
+define bin2o
+	bin2s $< | $(AS) -o $(@)
+	echo "extern const u8" `(echo $(<F) | sed -e 's/^\([0-9]\)/_\1/' -e 's/[^A-Za-z0-9_]/_/g')`"_end[];" > `(echo $(<F) | tr . _)`.h
+	echo "extern const u8" `(echo $(<F) | sed -e 's/^\([0-9]\)/_\1/' -e 's/[^A-Za-z0-9_]/_/g')`"[];" >> `(echo $(<F) | tr . _)`.h
+	echo "extern const u32" `(echo $(<F) | sed -e 's/^\([0-9]\)/_\1/' -e 's/[^A-Za-z0-9_]/_/g')`_size";" >> `(echo $(<F) | tr . _)`.h
+endef
+# environment
+PROGRAMW6432 = C:\Program Files
+# environment
+DEVKITPRO = /opt/devkitpro
+# makefile (from '/opt/devkitpro/devkitARM/base_tools', line 4)
+UNAME_S := MSYS_NT-10.0-19043
+# environment
+PATHEXT = .COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.PYW
+# automatic
++F = $(notdir $+)
+# environment
+ORIGINAL_XDG_CURRENT_DESKTOP = undefined
+# environment
+USERDOMAIN = KYLE-PC
+# 'override' directive
+GNUMAKEFLAGS := 
+# environment
+OS = Windows_NT
+# environment
+FP_NO_HOST_CHECK = NO
+# environment
+__COMPAT_LAYER = DetectorsAppHealth
+# makefile (from 'Makefile', line 27)
+GAME_SUBTITLE2 := Text 3
+# makefile (from 'Makefile', line 25)
+GAME_TITLE := Text 1
+# makefile
+.DEFAULT_GOAL := build
+# makefile (from 'Makefile', line 77)
+ARCH := -mthumb -mthumb-interwork
+# default
+MAKE_VERSION := 4.3
+# 'override' directive
+.SHELLSTATUS := 0
+# environment
+PROGRAMFILES(X86) = C:\Program Files (x86)
+# makefile (from 'Makefile', line 68)
+BUILD := build
+# makefile (from 'Makefile', line 88)
+LDFLAGS = -specs=ds_arm9.specs -g $(ARCH) -Wl,-Map,$(notdir $*.map)
+# environment
+USERDOMAIN_ROAMINGPROFILE = KYLE-PC
+# environment
+NUMBER_OF_PROCESSORS = 4
+# makefile (from '/opt/devkitpro/devkitARM/base_tools', line 30)
+ISVC = $(or $(VCBUILDHELPER_COMMAND),$(MSBUILDEXTENSIONSPATH32),$(MSBUILDEXTENSIONSPATH))
+# environment
+PUBLIC = C:\Users\Public
+# environment
+APPDATA = C:\Users\Kyle\AppData\Roaming
+# makefile (from 'Makefile', line 84)
+CFLAGS := -g -Wall -O2 -march=armv5te -mtune=arm946e-s -fomit-frame-pointer -ffast-math -mthumb -mthumb-interwork  -DARM9
+# environment
+HOMEDRIVE = C:
+# environment
+PROCESSOR_ARCHITECTURE = AMD64
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
+# environment
+HOME = /home/Kyle
+# environment
+VXIPNPPATH = C:\Program Files (x86)\IVI Foundation\VISA\
+# environment
+COMMONPROGRAMFILES(X86) = C:\Program Files (x86)\Common Files
+# makefile (from '/opt/devkitpro/devkitARM/base_tools', line 13)
+DEVKITPATH = $(shell echo "$(DEVKITPRO)" | sed -e 's/^\([a-zA-Z]\):/\/\1/')
+# environment
+ELECTRON_RUN_AS_NODE = 1
+# environment
+TEMP = /home/Kyle/AppData/Local/Temp
+# environment
+VSCODE_IPC_HOOK = \\.\pipe\2fea67094a8dde1163111c4f053fd232-1.70.0-main-sock
+# environment
+TERM = cygwin
+# makefile (from '/opt/devkitpro/devkitARM/base_tools', line 27)
+NM := arm-none-eabi-gcc-nm
+# default
+.RECIPEPREFIX := 
+# automatic
+<F = $(notdir $<)
+# default
+SUFFIXES := 
+# environment
+ALLUSERSPROFILE = C:\ProgramData
+# makefile (from 'Makefile', line 67)
+TARGET := Kaboom!DS
+# makefile (from 'Makefile', line 133)
+LD := arm-none-eabi-g++
+# environment
+SESSIONNAME = Console
+# makefile (from 'Makefile', line 85)
+CXXFLAGS := -g -Wall -O2 -march=armv5te -mtune=arm946e-s -fomit-frame-pointer -ffast-math -mthumb -mthumb-interwork  -DARM9 -fno-rtti -fno-exceptions
+# makefile (from '/opt/devkitpro/devkitARM/base_tools', line 26)
+STRIP := arm-none-eabi-strip
+# default
+.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync check-symlink load
+# environment
+PROCESSOR_REVISION = 3a09
+# environment
+WINDOWS_TRACING_LOGFILE = C:\BVTBin\Tests\installpackage\csilogfile.log
+# makefile (from '/opt/devkitpro/devkitARM/base_tools', line 22)
+CXX := arm-none-eabi-g++
+# makefile (from '/opt/devkitpro/devkitARM/base_tools', line 21)
+CC := arm-none-eabi-gcc
+# makefile (from '/opt/devkitpro/devkitARM/base_tools', line 25)
+OBJCOPY := arm-none-eabi-objcopy
+# makefile (from 'Makefile', line 69)
+SOURCES := source
+# makefile (from 'Makefile', line 71)
+DATA := data
+# environment
+PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 58 Stepping 9, GenuineIntel
+# variable set hash-table stats:
+# Load=156/1024=15%, Rehash=0, Collisions=23/276=8%
+
+# Pattern-specific Variable Values
+
+# No pattern-specific variable values.
+
+# Directories
+
+# . (device 2621747111, inode 37717646879321081): 18 files, no impossibilities.
+# source (device 2621747111, inode 29554872554670030): 11 files, no impossibilities.
+# data: could not be stat'd.
+# /opt/devkitpro/Projects/Kaboom!DS/source (device 2621747111, inode 29554872554670030): 11 files, no impossibilities.
+# /opt/devkitpro/Projects/Kaboom!DS/data: could not be stat'd.
+
+# 40 files, no impossibilities in 5 directories.
+
+# Implicit Rules
+
+%.a:
+#  recipe to execute (from '/opt/devkitpro/devkitARM/base_rules', line 12):
+	@echo $(notdir $@)
+	@rm -f $@
+	$(AR) -rc $@ $^
+
+%.arm.o: %.arm.cpp
+#  recipe to execute (from '/opt/devkitpro/devkitARM/base_rules', line 18):
+	@echo $(notdir $<)
+	$(CXX) -MMD -MP -MF $(DEPSDIR)/$*.arm.d $(CXXFLAGS) -marm -c $< -o $@ $(ERROR_FILTER)
+
+%.arm.o: %.arm.c
+#  recipe to execute (from '/opt/devkitpro/devkitARM/base_rules', line 23):
+	@echo $(notdir $<)
+	$(CC) -MMD -MP -MF $(DEPSDIR)/$*.arm.d $(CFLAGS) -marm -c $< -o $@ $(ERROR_FILTER)
+
+%.arm.o: %.arm.m
+#  recipe to execute (from '/opt/devkitpro/devkitARM/base_rules', line 28):
+	@echo $(notdir $<)
+	$(CC) -MMD -MP -MF $(DEPSDIR)/$*.arm.d $(OBJCFLAGS) -marm -c $< -o $@ $(ERROR_FILTER)
+
+%.thumb.o: %.thumb.cpp
+#  recipe to execute (from '/opt/devkitpro/devkitARM/base_rules', line 33):
+	@echo $(notdir $<)
+	$(CXX) -MMD -MP -MF $(DEPSDIR)/$*.thumb.d $(CXXFLAGS) -mthumb -c $< -o $@ $(ERROR_FILTER)
+
+%.thumb.o: %.thumb.c
+#  recipe to execute (from '/opt/devkitpro/devkitARM/base_rules', line 38):
+	@echo $(notdir $<)
+	$(CC) -MMD -MP -MF $(DEPSDIR)/$*.thumb.d $(CFLAGS) -mthumb -c $< -o $@ $(ERROR_FILTER)
+
+%.thumb.o: %.thumb.m
+#  recipe to execute (from '/opt/devkitpro/devkitARM/base_rules', line 43):
+	@echo $(notdir $<)
+	$(CC) -MMD -MP -MF $(DEPSDIR)/$*.thumb.d $(OBJCFLAGS) -mthumb -c $< -o $@ $(ERROR_FILTER)
+
+%.iwram.o: %.iwram.cpp
+#  recipe to execute (from '/opt/devkitpro/devkitARM/base_rules', line 48):
+	@echo $(notdir $<)
+	$(CXX) -MMD -MP -MF $(DEPSDIR)/$*.iwram.d $(CXXFLAGS) -marm -mlong-calls -c $< -o $@ $(ERROR_FILTER)
+
+%.iwram.o: %.iwram.c
+#  recipe to execute (from '/opt/devkitpro/devkitARM/base_rules', line 53):
+	@echo $(notdir $<)
+	$(CC) -MMD -MP -MF $(DEPSDIR)/$*.iwram.d $(CFLAGS) -marm -mlong-calls -c $< -o $@ $(ERROR_FILTER)
+
+%.iwram.o: %.iwram.m
+#  recipe to execute (from '/opt/devkitpro/devkitARM/base_rules', line 58):
+	@echo $(notdir $<)
+	$(CC) -MMD -MP -MF $(DEPSDIR)/$*.iwram.d $(OBJCFLAGS) -marm -mlong-calls -c $< -o $@ $(ERROR_FILTER)
+
+%.itcm.o: %.itcm.cpp
+ 
+#  recipe to execute (from '/opt/devkitpro/devkitARM/base_rules', line 63):
+	@echo $(notdir $<)
+	$(CXX) -MMD -MP -MF $(DEPSDIR)/$*.itcm.d $(CXXFLAGS) -marm -mlong-calls -c $< -o $@ $(ERROR_FILTER)
+
+%.itcm.o: %.itcm.c
+#  recipe to execute (from '/opt/devkitpro/devkitARM/base_rules', line 68):
+	@echo $(notdir $<)
+	$(CC) -MMD -MP -MF $(DEPSDIR)/$*.itcm.d $(CFLAGS) -marm -mlong-calls -c $< -o $@ $(ERROR_FILTER)
+
+%.itcm.o: %.itcm.m
+#  recipe to execute (from '/opt/devkitpro/devkitARM/base_rules', line 73):
+	@echo $(notdir $<)
+	$(CC) -MMD -MP -MF $(DEPSDIR)/$*.itcm.d $(OBJCFLAGS) -marm -mlong-calls -c $< -o $@ $(ERROR_FILTER)
+
+%.o: %.cpp
+#  recipe to execute (from '/opt/devkitpro/devkitARM/base_rules', line 79):
+	@echo $(notdir $<)
+	$(CXX) -MMD -MP -MF $(DEPSDIR)/$*.d $(CXXFLAGS) -c $< -o $@ $(ERROR_FILTER)
+
+%.o: %.c
+#  recipe to execute (from '/opt/devkitpro/devkitARM/base_rules', line 84):
+	@echo $(notdir $<)
+	$(CC) -MMD -MP -MF $(DEPSDIR)/$*.d $(CFLAGS) -c $< -o $@ $(ERROR_FILTER)
+
+%.o: %.m
+#  recipe to execute (from '/opt/devkitpro/devkitARM/base_rules', line 89):
+	@echo $(notdir $<)
+	$(CC) -MMD -MP -MF $(DEPSDIR)/$*.d $(OBJCFLAGS) -c $< -o $@ $(ERROR_FILTER)
+
+%.o: %.s
+#  recipe to execute (from '/opt/devkitpro/devkitARM/base_rules', line 94):
+	@echo $(notdir $<)
+	$(CC) -MMD -MP -MF $(DEPSDIR)/$*.d -x assembler-with-cpp $(ASFLAGS) -c $< -o $@ $(ERROR_FILTER)
+
+%.o: %.S
+#  recipe to execute (from '/opt/devkitpro/devkitARM/base_rules', line 99):
+	@echo $(notdir $<)
+	$(CC) -MMD -MP -MF $(DEPSDIR)/$*.d -x assembler-with-cpp $(ASFLAGS) -c $< -o $@ $(ERROR_FILTER)
+
+%.nds: %.arm9
+#  recipe to execute (from 'Makefile', line 35):
+	@ndstool -c $@ -9 $< -b $(GAME_ICON) "$(GAME_TITLE);$(GAME_SUBTITLE1);$(GAME_SUBTITLE2)" $(_ADDFILES)
+	@echo built ... $(notdir $@)
+
+%.nds: %.elf
+#  recipe to execute (from 'Makefile', line 40):
+	@ndstool -c $@ -9 $< -b $(GAME_ICON) "$(GAME_TITLE);$(GAME_SUBTITLE1);$(GAME_SUBTITLE2)" $(_ADDFILES)
+	@echo built ... $(notdir $@)
+
+%.arm9: %.elf
+#  recipe to execute (from 'Makefile', line 45):
+	@$(OBJCOPY) -O binary $< $@
+	@echo built ... $(notdir $@)
+
+%.arm7: %.elf
+#  recipe to execute (from 'Makefile', line 50):
+	@$(OBJCOPY) -O binary $< $@
+	@echo built ... $(notdir $@)
+
+%.elf:
+#  recipe to execute (from 'Makefile', line 55):
+	@echo linking $(notdir $@)
+	@$(LD)  $(LDFLAGS) $(OFILES) $(LIBPATHS) $(LIBS) -o $@
+
+# 23 implicit rules, 0 (0.0%) terminal.
+# Files
+
+# Not a target:
+/opt/devkitpro/devkitARM/base_tools:
+#  Implicit rule search has been done.
+#  Last modified 2019-02-19 11:25:06
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+Makefile:
+#  Implicit rule search has been done.
+#  Last modified 2011-08-25 16:28:56.6749937
+#  File has been updated.
+#  Successfully updated.
+
+clean:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 166):
+	@echo clean ...
+	@rm -fr $(BUILD) $(TARGET).elf $(TARGET).nds $(TARGET).arm9
+
+# Not a target:
+/opt/devkitpro/devkitARM/base_rules:
+#  Implicit rule search has been done.
+#  Last modified 2019-02-19 11:25:06
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+all:
+#  Command line target.
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has not been updated.
+
+build:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 161):
+	@[ -d $@ ] || mkdir -p $@
+	@make --no-print-directory -C $(BUILD) -f $(CURDIR)/Makefile
+
+.SUFFIXES:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+.PHONY: build clean
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# files hash-table stats:
+# Load=9/1024=1%, Rehash=0, Collisions=0/29=0%
+# VPATH Search Paths
+
+# No 'vpath' search paths.
+
+# General ('VPATH' variable) search path:
+# /opt/devkitpro/Projects/Kaboom!DS/source:/opt/devkitpro/Projects/Kaboom!DS/data
+
+# strcache buffers: 1 (0) / strings = 66 / storage = 674 B / avg = 10 B
+# current buf: size = 8162 B / used = 674 B / count = 66 / avg = 10 B
+
+# strcache performance: lookups = 102 / hit rate = 35%
+# hash-table stats:
+# Load=66/8192=1%, Rehash=0, Collisions=3/102=3%
+# Finished Make data base on Fri Aug  5 20:10:46 2022
+
+ 

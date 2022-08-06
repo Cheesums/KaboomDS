@@ -172,10 +172,10 @@ int main() {
 							bomb[i].jumpScreen();
 						}else
 						{
+							bombsExist = false;
 							storedFrameCount = frameCount;
 							storedBombID = i;
-							bombRollover = (storedBombID > bombCount);							
-							soundSetVolume(fuseSound, 0);
+							bombRollover = (storedBombID > bombCount);
 							gameState = 3;
 						}
 					}

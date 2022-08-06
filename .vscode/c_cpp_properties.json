@@ -2,7 +2,9 @@
     "configurations": [
         {
             "name": "NDS",
-            "forcedInclude": ["${workspaceFolder}\\include\\vscode_fix.h"],
+            "forcedInclude": [
+                "${workspaceFolder}\\include\\vscode_fix.h"
+            ],
             "includePath": [
                 "${workspaceFolder}",
                 "${workspaceFolder}\\include\\**",
@@ -30,7 +32,8 @@
             },
             "cStandard": "c11",
             "cppStandard": "c++11",
-            "compilerPath": "C:\\devkitPro\\devkitARM\\bin\\arm-none-eabi-g++.exe"
+            "compilerPath": "C:\\devkitPro\\devkitARM\\bin\\arm-none-eabi-g++.exe",
+            "configurationProvider": "ms-vscode.makefile-tools"
         }
     ],
     "version": 4

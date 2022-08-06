@@ -143,7 +143,7 @@ void setup() {
 	bomber.create();
 	bomber.setLayer(3);
     //change the bomber sprite to the frame holding the bomb
-	bomber.setFrame(1);
+	bomber.setFrame(0);
     //set bomber scroll speed
 	bomber.setVel(2);
 }

@@ -351,6 +351,7 @@ int main() {
 					{
 						currentRound = currentRound - 1;
 					}
+					bomber.setFrame(0);
 					gameState = 2;
 				}
 				
@@ -372,7 +373,7 @@ int main() {
 				scoreInt = 0;
 				gameState = 0;
 				remainingBuckets = 3;
-				bomber.setFrame(1);
+				bomber.setFrame(0);
 				for (int i = 0; i < 3; i++)
 				{
 					bucket[i].show();

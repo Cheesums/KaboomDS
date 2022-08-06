@@ -329,6 +329,7 @@ int main() {
 					//To be added - delay to seperate screen explosion further from bomb explosions
 					explosionSound = 0;
 					NF_PlayRawSound(13, 127, 64, false, 0);
+					explosion();
 					bombExpFrameCount = 10;
 					remainingBuckets = remainingBuckets - 1;
 					bucket[remainingBuckets].hide();
@@ -353,6 +354,7 @@ int main() {
 			default:
 				break;				
 			}
+			
 
 						
 							

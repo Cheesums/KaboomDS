@@ -5,5 +5,7 @@
 
 void collision(Bomb &bomb);
 
+void explosion();
+
 
 #endif

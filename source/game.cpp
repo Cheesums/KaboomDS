@@ -23,6 +23,7 @@ extern int gameState;
 extern int currentRound;
 
 extern int fuseSound;
+int catchSoundChannel;
 
 extern Bucket bucket[3];
 extern RoundVar roundVar[9];
@@ -44,6 +45,9 @@ void collision(Bomb &bomb) {
             if (((bombY+BOMB_HEIGHT >= bucketTop) && (bombY <= bucketTop+BUCKET_HEIGHT)) && bomb.isSpawned())
             {
                 bomb.del();
+                soundKill(catchSoundChannel);
+                soundSetVolume(fuseSound, 0);
+                catchSoundChannel = NF_PlayRawSound(currentRound, 127, 64, false, 0);
                 bombsCaught++;
                 scoreInt = scoreInt + roundVar[currentRound].bombValue;
                 newLifeTracker = newLifeTracker + roundVar[currentRound].bombValue;

@@ -50,6 +50,7 @@ void collision(Bomb &bomb) {
                 catchSoundChannel = NF_PlayRawSound(currentRound, 127, 64, false, 0);
                 bombsCaught++;
                 scoreInt = scoreInt + roundVar[currentRound].bombValue;
+                
                 newLifeTracker = newLifeTracker + roundVar[currentRound].bombValue;
                 if (newLifeTracker >= 1000)
                 {

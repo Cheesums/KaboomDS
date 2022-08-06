@@ -133,6 +133,10 @@ int main() {
 				bomber.bounce(roundVar[currentRound].revFreq);
 			}			
 			bomber.updatePos();
+		    if ((scoreInt >= 1000) && !(bomber.getFrame()==2)) //give bomber suprise face if score > 1000
+                {
+                    bomber.setFrame(2);
+                }
 
 			//drop a bomb every 20 frames and keep track of each bomb
 			if ((frameCount%roundVar[currentRound].bombFrequency == 1) && (roundBombCurrent < roundVar[currentRound].bombTarget))
@@ -178,6 +182,7 @@ int main() {
 							storedFrameCount = frameCount;
 							storedBombID = i;
 							bombRollover = (storedBombID > bombCount);
+							bomber.setFrame(1);
 							gameState = 3;
 						}
 					}
@@ -367,6 +372,7 @@ int main() {
 				scoreInt = 0;
 				gameState = 0;
 				remainingBuckets = 3;
+				bomber.setFrame(1);
 				for (int i = 0; i < 3; i++)
 				{
 					bucket[i].show();

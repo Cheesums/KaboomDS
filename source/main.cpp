@@ -414,8 +414,8 @@ int main() {
 			break;
 		}
 
-		sprintf(scoreString, "score %i", scoreInt);
-		NF_WriteText16(0, 0, 0, 0, scoreString);
+		sprintf(scoreString, "%i", scoreInt);
+		NF_WriteText16(0, 0, 24, 1, scoreString);
 		
 
 		frameCount ++;

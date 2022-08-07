@@ -65,6 +65,7 @@ void displayBackgrounds() {
 	NF_CreateTiledBg(0, 3, "backgroundTop");
 	NF_CreateTiledBg(1, 3, "backgroundBot");
 	NF_CreateTextLayer16(0, 0, 0, "font");
+	NF_DefineTextColor(0,0,0,25,25,6);
 
 }
 

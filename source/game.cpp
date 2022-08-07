@@ -86,9 +86,9 @@ void collision(Bomb &bomb) {
                     heldBomb.show();
                     gameState = 2;
                     currentRound++;
-                    if (currentRound > 8)
+                    if (currentRound > 7)
                     {
-                        currentRound = 8;
+                        currentRound = 7;
                     }
                     
                 }

@@ -7,9 +7,6 @@
 #include "input.h"
 #include "game.h"
 
-char* catchFrameString;
-char* catchBucketString;
-
 int SCREEN_SIZE_Y = 192;
 int SCREEN_SIZE_X = 256;
 
@@ -416,12 +413,6 @@ int main() {
 
 		sprintf(scoreString, "score %i", scoreInt);
 		NF_WriteText16(0, 0, 0, 0, scoreString);
-
-		sprintf(catchFrameString, "catchFrame %i", catchFrame);
-		NF_WriteText16(0, 0, 0, 4, catchFrameString);
-
-		sprintf(catchBucketString, "catchBucket %i", catchBucket);
-		NF_WriteText16(0, 0, 0, 8, catchBucketString);
 		
 
 		frameCount ++;

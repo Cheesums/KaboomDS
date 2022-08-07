@@ -56,7 +56,6 @@ void collision(Bomb &bomb) {
             {
                 bomb.del();
                 soundKill(catchSoundChannel);
-                soundSetVolume(fuseSound, 0);
                 catchSoundChannel = NF_PlayRawSound(currentRound, 127, 64, false, 0);
                 bombsCaught++;
                 scoreInt = scoreInt + roundVar[currentRound].bombValue;
@@ -81,7 +80,7 @@ void collision(Bomb &bomb) {
 
                 if (bombsCaught >= roundVar[currentRound].bombTarget)   //Last bomb for the round is caught
                 {
-                    soundSetVolume(fuseSound, 0);
+                    soundPause(fuseSound);
 					heldBomb.setX(bomber.getX());
 					heldBomb.updatePos();
                     heldBomb.show();

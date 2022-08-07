@@ -124,6 +124,7 @@ int main() {
 				bombsCaught = 0;
 				frameCount = 0;
 				bombsExist = false;
+				soundResume(fuseSound);
 				gameState = 1;
 				heldBomb.hide();
 			}
@@ -199,6 +200,7 @@ int main() {
 							storedBombID = i;
 							bombRollover = (storedBombID > bombCount);
 							bomber.setFrame(1);
+							soundPause(fuseSound);
 							gameState = 3;
 						}
 					}
@@ -248,7 +250,7 @@ int main() {
 				}
 			} else
 			{
-				soundSetVolume(fuseSound, 0);
+				soundPause(fuseSound);
 			}
 			
 			
@@ -271,6 +273,7 @@ int main() {
 				bombsCaught = 0;
 				frameCount = 0;
 				heldBomb.hide();
+				soundResume(fuseSound);
 				gameState = 1;
 			}
 			

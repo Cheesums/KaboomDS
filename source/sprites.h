@@ -56,6 +56,7 @@ class Bucket: public Sprite {
     void screenBind();
     void trackBucket(Bucket bucketTop);
     void bucketScroll(int screenDis);
+	int animateCatch(int frame);
 };
 
 class Bomb: public Sprite {

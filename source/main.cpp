@@ -7,6 +7,9 @@
 #include "input.h"
 #include "game.h"
 
+char* catchFrameString;
+char* catchBucketString;
+
 int SCREEN_SIZE_Y = 192;
 int SCREEN_SIZE_X = 256;
 
@@ -52,6 +55,9 @@ int currentRound = 0;
 
 int remainingBuckets = 3;
 
+int catchBucket = 0;
+int catchFrame = 0;
+
 extern RoundVar roundVar[9];
 
 int roundBombCurrent = 0;
@@ -92,7 +98,18 @@ int main() {
 		Held = keysHeld();
 		Released = keysUp();
 
-
+		for (int i = 0; i < 3; i++) //Animate bucket if it was the last to catch a bomb, otherwise reset animation
+		{
+			if (i==catchBucket)
+			{
+				catchFrame = bucket[i].animateCatch(catchFrame);
+			}else
+			{
+				bucket[i].setFrame(0);
+			}
+		}
+		
+		catchFrame = bucket[catchBucket].animateCatch(catchFrame);
 		//Determine the state of the game; pre-game, between rounds, or in a roundVar
 		switch (gameState)
 		{
@@ -399,6 +416,12 @@ int main() {
 
 		sprintf(scoreString, "score %i", scoreInt);
 		NF_WriteText16(0, 0, 0, 0, scoreString);
+
+		sprintf(catchFrameString, "catchFrame %i", catchFrame);
+		NF_WriteText16(0, 0, 0, 4, catchFrameString);
+
+		sprintf(catchBucketString, "catchBucket %i", catchBucket);
+		NF_WriteText16(0, 0, 0, 8, catchBucketString);
 		
 
 		frameCount ++;

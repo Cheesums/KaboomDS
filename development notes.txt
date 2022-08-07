@@ -313,6 +313,22 @@ catch 8
 9	c	c
 8	c	c
 
+catch animation frames
+
+0
+1
+1
+1
+1
+2
+2
+2
+2
+3
+3
+3
+3
+
 new bucket (Round 7? 3 bucket)		2 bucket same			1bucket same
 f	c	c			f	c	c		f	c	c
 f	c	c			f	c	c		f	c	c

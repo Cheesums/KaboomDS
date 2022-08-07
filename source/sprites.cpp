@@ -171,6 +171,77 @@ void Bucket::bucketScroll(int screenDis) {
     this->updatePos();
 }
 
+int Bucket::animateCatch(int frame){
+    int frame_ = frame;
+    switch (frame_)
+    {
+    case 0:
+        this->setFrame(0);
+        break;
+    
+    case 1:
+        this->setFrame(1);
+        break;
+
+    case 2:
+        this->setFrame(1);
+        break;
+
+    case 3:
+        this->setFrame(1);
+        break;
+    
+    case 4:
+        this->setFrame(1);
+        break;
+
+    case 5:
+        this->setFrame(2);
+        break;
+    case 6:
+        this->setFrame(2);
+        break;
+    
+    case 7:
+        this->setFrame(2);
+        break;
+
+    case 8:
+        this->setFrame(2);
+        break;
+
+    case 9:
+        this->setFrame(3);
+        break;
+    
+    case 10:
+        this->setFrame(3);
+        break;
+
+    case 11:
+        this->setFrame(3);
+        break;
+    case 12:
+        this->setFrame(3);
+        break;
+    
+    case 13:
+        this->setFrame(0);
+        break;
+
+    default:
+        this->setFrame(0);
+        break;
+    }
+    if (frame_==14)
+    {
+        return frame_;
+    }else
+    {
+    return frame_+1;
+    }
+}
+
 
 MadBomber bomber;   
 Bucket bucket[3];

@@ -22,7 +22,11 @@ extern int scoreInt;
 extern int gameState;
 extern int currentRound;
 
+extern int catchBucket;
+extern int catchFrame;
+
 extern int fuseSound;
+
 int catchSoundChannel;
 
 extern Bucket bucket[3];
@@ -32,6 +36,7 @@ extern Bomb heldBomb;
 
 void collision(Bomb &bomb) {
 
+    int bucketCounter = 0;
     int bucketTop = BUCKET_TOP + BUCKET_SPRITE_Y_OFFSET;
     int bucketBot = bucketTop + (remainingBuckets*BUCKET_OFFSET);
 
@@ -42,6 +47,56 @@ void collision(Bomb &bomb) {
     //check if bomb is withing X range of the buckets
     if ((bombX+BOMB_WIDTH >= bucketX) && (bombX <= bucketX+BUCKET_WIDTH))
     {
+
+        for(bucketCounter=0; bucketCounter<remainingBuckets; bucketCounter=bucketCounter+1)
+        {
+            bucketTop = BUCKET_TOP+BUCKET_SPRITE_Y_OFFSET + BUCKET_OFFSET*bucketCounter;
+
+            if (((bombY+BOMB_HEIGHT >= bucketTop) && (bombY <= bucketTop+BUCKET_HEIGHT)) && bomb.isSpawned())   //Bomb is caught
+            {
+                bomb.del();
+                soundKill(catchSoundChannel);
+                soundSetVolume(fuseSound, 0);
+                catchSoundChannel = NF_PlayRawSound(currentRound, 127, 64, false, 0);
+                bombsCaught++;
+                scoreInt = scoreInt + roundVar[currentRound].bombValue;
+
+               catchFrame = 0;
+               catchBucket = bucketCounter;
+                
+                newLifeTracker = newLifeTracker + roundVar[currentRound].bombValue;
+                if (newLifeTracker >= 1000)
+                {
+                    newLifeTracker = newLifeTracker - 1000;
+                    if (remainingBuckets < 3)
+                    {
+                        bucket[remainingBuckets].show();
+                        NF_PlayRawSound(14, 127, 64, false, 0);
+                        remainingBuckets++;
+                    }
+                    
+                }
+                
+
+
+                if (bombsCaught >= roundVar[currentRound].bombTarget)   //Last bomb for the round is caught
+                {
+                    soundSetVolume(fuseSound, 0);
+					heldBomb.setX(bomber.getX());
+					heldBomb.updatePos();
+                    heldBomb.show();
+                    gameState = 2;
+                    currentRound++;
+                    if (currentRound > 8)
+                    {
+                        currentRound = 8;
+                    }
+                    
+                }
+            }
+            
+        }
+        /*
         for (bucketTop = BUCKET_TOP + BUCKET_SPRITE_Y_OFFSET; bucketTop < bucketBot; bucketTop = bucketTop + BUCKET_OFFSET)
         {
             if (((bombY+BOMB_HEIGHT >= bucketTop) && (bombY <= bucketTop+BUCKET_HEIGHT)) && bomb.isSpawned())   //Bomb is caught
@@ -87,6 +142,7 @@ void collision(Bomb &bomb) {
             
             
         }
+        */
     }
     
 }

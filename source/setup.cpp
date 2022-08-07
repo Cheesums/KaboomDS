@@ -5,6 +5,7 @@
 RoundVar roundVar[9];
 extern MadBomber bomber;
 extern Bucket bucket[3];
+Bomb heldBomb;
 
 extern int BUCKET_TOP;
 extern int BUCKET_OFFSET;
@@ -142,8 +143,18 @@ void setup() {
 	bomber.setPal(0);
 	bomber.create();
 	bomber.setLayer(3);
-    //change the bomber sprite to the frame holding the bomb
+    //change the bomber sprite frown
 	bomber.setFrame(0);
     //set bomber scroll speed
 	bomber.setVel(2);
+
+	//create bomb to be held by the bomber
+	heldBomb.setID(1);
+	heldBomb.setPos(100, BOMBER_SPAWN_Y+18);
+	heldBomb.setScreen(0);
+	heldBomb.setGfx(2);
+	heldBomb.setPal(2);
+	heldBomb.create();
+	heldBomb.setLayer(2);
+
 }

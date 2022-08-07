@@ -172,7 +172,7 @@ void Bucket::bucketScroll(int screenDis) {
 }
 
 
-MadBomber bomber;
+MadBomber bomber;   
 Bucket bucket[3];
 
 void Bomb::spawn(int bombCount) {
@@ -209,3 +209,4 @@ bool Bomb::isFinal() {
 void Bomb::cycleColor(){
     NF_SpriteSetPalColor(screen_, 2, 7, rand()%31, rand()%31, rand()%31);
 }
+

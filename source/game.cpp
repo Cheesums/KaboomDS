@@ -27,6 +27,8 @@ int catchSoundChannel;
 
 extern Bucket bucket[3];
 extern RoundVar roundVar[9];
+extern MadBomber bomber;
+extern Bomb heldBomb;
 
 void collision(Bomb &bomb) {
 
@@ -69,6 +71,9 @@ void collision(Bomb &bomb) {
                 if (bombsCaught >= roundVar[currentRound].bombTarget)   //Last bomb for the round is caught
                 {
                     soundSetVolume(fuseSound, 0);
+					heldBomb.setX(bomber.getX());
+					heldBomb.updatePos();
+                    heldBomb.show();
                     gameState = 2;
                     currentRound++;
                     if (currentRound > 8)

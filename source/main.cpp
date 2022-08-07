@@ -69,6 +69,7 @@ int RESET_BUTTON = KEY_START;
 
 extern MadBomber bomber;
 extern Bucket bucket[3];
+extern Bomb heldBomb;
 
 
 Paddle paddle;
@@ -110,6 +111,7 @@ int main() {
 				frameCount = 0;
 				bombsExist = false;
 				gameState = 1;
+				heldBomb.hide();
 			}
 			
 			break;
@@ -254,6 +256,7 @@ int main() {
 				roundBombCurrent = 0;
 				bombsCaught = 0;
 				frameCount = 0;
+				heldBomb.hide();
 				gameState = 1;
 			}
 			
@@ -352,6 +355,11 @@ int main() {
 						currentRound = currentRound - 1;
 					}
 					bomber.setFrame(0);
+					heldBomb.setX(bomber.getX());
+					heldBomb.updatePos();
+					heldBomb.setX(bomber.getX());
+					heldBomb.updatePos();
+					heldBomb.show();
 					gameState = 2;
 				}
 				
@@ -371,6 +379,9 @@ int main() {
 			{
 				currentRound = 0;
 				scoreInt = 0;
+				heldBomb.setX(bomber.getX());
+				heldBomb.updatePos();
+				heldBomb.show();
 				gameState = 0;
 				remainingBuckets = 3;
 				bomber.setFrame(0);
